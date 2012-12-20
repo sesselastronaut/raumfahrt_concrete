@@ -1,0 +1,59 @@
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta id="viewport" name="viewport" content="width=1024, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="font/Latin-Modern-Roman/stylesheet.css" type="text/css" charset="utf-8"/>
+    <link rel="stylesheet" href="css/screen.css" type="text/css" charset="utf-8"/>
+  </head>
+  <body>
+    <div id="graph" style=""></div>
+    <div id="overlay">
+      <h1><span class="meta">Versinnlichende Darstellung über das</span> Geostation&auml;res Schlafgemach <span class="meta">zur Wahl des Himmelskörpers</span></h1>
+      <div id="nav"><ul></ul></div>
+      <div id="infobox"><div class="inner">
+	  <div class="nowrunning">
+	    Momentan ausgewählter Himmelskörper:
+	    <div class="title"><img src="img/Jupiter_symbol.svg"/>Jupiter</div>
+	  </div>
+	  <div class="info">
+	    <div class="title"><img src="img/Moon_symbol.svg"/>Mond</div>
+	    <div class="pic"><img src="img/pic-moon.png" width="120" height="119" alt="moon"/></div>
+	    <div class="txt">
+	      Distanz: <span class="val-dist">0.00589</span>AU<br/>
+	      Rotation: <span class="val-rot">30</span>&deg;<br/>
+	      Sichtbare Gr&ouml;sse: <span class="val-size">21</span>&deg;<br/>
+	    </div>
+	    <br clear="all">
+	    <div class="actions">
+	      <button id="go-cancel"><div>Abbrechen</div></button>
+	      <button id="go-accept"><div>Ausw&auml;hlen</div></button>
+	    </div>
+	  </div>
+      </div></div>
+      <div class="label" style="left:420px;top:60px;">1. Die Rotationen der Himmelskörper innerhalb der nächsten 7 Stunden</div>
+    </div>
+    
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/kinetic-v4.0.5.js"></script>
+    <script type="text/javascript" src="js/kinematic-helper.js"></script>
+    <script type="text/javascript" src="js/spaceobject.js"></script>
+    <script type="text/javascript" src="js/isom.js"></script>
+    <script type="text/javascript" src="../py/rzalt.json"></script>
+    <script type="text/javascript" src="js/main0.3.js"></script>
+    <!--<script type="text/javascript" src="./svg.js"></script>-->
+    <script>
+      /*
+      if (document.webkitRequestFullScreen) {
+      document.webkitRequestFullScreen();
+      }
+      else{
+      alert("no fullscreen!");
+      }
+      */
+
+    </script>
+    
+</body>
+</html>

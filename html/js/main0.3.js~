@@ -1,0 +1,84 @@
+
+var dbg = function(log_txt){
+    if (window.console != undefined) {
+	console.log(log_txt);
+    }
+}
+
+
+var stage;
+var BGLayer,DarksideLayer,LightsideLayer;
+var ObjectLegendLayer;
+var spaceObjects;
+window.onload = function() {
+    stage = new Kinetic.Stage({
+        container: "graph",
+        width: 1024,
+        height: 768
+    });
+    LightsideLayer = new Kinetic.Layer();
+    DarksideLayer = new Kinetic.Layer();
+    
+    BGLayer = new Kinetic.Layer();
+    ObjectLegendLayer = new Kinetic.Layer();
+    
+
+    //frame
+    BGLayer.add(new Kinetic.Rect({
+	strokeWidth:2,
+	stroke:'black',
+	lineCap:'square',
+	lineJoin:'miter',
+	x:4,y:4,width:stage.getWidth()-8,height:stage.getHeight()-8
+    }));
+    BGLayer.add(new Kinetic.Rect({
+	strokeWidth:1,
+	stroke:'black',
+	lineCap:'square',
+	lineJoin:'miter',
+	x:8,y:8,width:stage.getWidth()-16,height:stage.getHeight()-16
+    }));
+    
+    //cross
+    var line = new Kinetic.Line({strokeWidth:1,stroke:'black',points:[-4,0,4,0]});
+    LightsideLayer.add(line);
+    line = new Kinetic.Line({strokeWidth:1,stroke:'black',points:[0,-4,0,4]});
+    LightsideLayer.add(line);
+    
+    var _hemi = new Hemisphere(18,64,stage.getWidth()*.3);
+    LightsideLayer.add(_hemi.getNorthpole());
+    DarksideLayer.add(_hemi.getSoutpole());
+    
+    LightsideLayer.add(AxisHelper());
+    
+    // create categories
+    createHTMLCategories();
+    
+    spaceObjects = new Array();
+    for(var star in arr){
+	spaceObjects[spaceObjects.length] = new SpaceObj(arr[star],stage.getWidth()*.3);
+	//spaceObjects[spaceObjects.length-1].calcPath();
+	//spaceObjects[spaceObjects.length-1].calcInfoPath();
+	LightsideLayer.add(spaceObjects[spaceObjects.length-1].getGroup('sunny'));
+	LightsideLayer.add(spaceObjects[spaceObjects.length-1].getGroup('info'));
+	DarksideLayer.add(spaceObjects[spaceObjects.length-1].getGroup('shady'));
+	spaceObjects[spaceObjects.length-1].hideInfo();
+
+	spaceObjects[spaceObjects.length-1].updateData(arr[star]);
+    }
+    
+    DarksideLayer.setRotationDeg(-90);
+    DarksideLayer.move(stage.getWidth()*.6,stage.getHeight()*.53)
+    DarksideLayer.setOpacity(.7);
+    LightsideLayer.setRotationDeg(-90);
+    LightsideLayer.move(stage.getWidth()*.6,stage.getHeight()*.53)
+
+    stage.add(DarksideLayer);
+    stage.add(LightsideLayer);
+    LightsideLayer.moveToTop();
+    DarksideLayer.moveToBottom();
+    
+    stage.add(BGLayer);
+    stage.add(ObjectLegendLayer);
+};
+

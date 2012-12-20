@@ -1,0 +1,86 @@
+
+var dbg = function(log_txt){
+    if (window.console != undefined) {
+	console.log(log_txt);
+    }
+}
+var showInfo = function(evt,log_txt) {
+    el = document.getElementById('info');
+    el.innerHTML = log_txt;
+    el.style.left = evt.pageX;
+    el.style.top = evt.pageY;
+}
+
+var objColors = {
+    'Sun':'yellow',
+    'Moon':'orange',
+    'Jupiter':'brown',
+    'Venus':'blue',
+    'Mars':'red',
+    'OSCAR7':'green',
+    'ISS':'pink',
+    'TOOLBAG':'lightblue',
+}
+
+var drawObjectPaths = function(scale){
+    for(star in arr){
+	var _points = new Array();
+	for(data in arr[star]){
+	    _points[_points.length] = Math.sin(arr[star][data]['az']) * arr[star][data]['dist'] * scale;
+	    _points[_points.length] = Math.cos(arr[star][data]['az']) * arr[star][data]['dist'] * scale;
+	}
+	path = new Kinetic.Line({
+	    points: _points,
+            stroke: objColors[star],
+            strokeWidth: 1,
+            lineCap: "round",
+            lineJoin: "round",
+	});
+	path.move(400,300)
+	dbg(star);
+	dbg(_points);
+	ObjectPathLayer.add(path);
+    }
+}
+
+var ObjectPathLayer = new Kinetic.Layer();
+window.onload = function() {
+    var stage = new Kinetic.Stage({
+        container: "stars",
+        width: 800,
+        height: 600
+    });
+    drawObjectPaths(100);
+    stage.add(ObjectPathLayer);
+};
+
+
+/*
+var mode = 'bed';
+var html = '';
+for(star  in arr){
+    html+= '<div class="legend '+star+'">'+star+'</div>';
+    for(data in arr[star]){
+	if(mode == 'gal'){
+	    y = arr[star][data]['dec'];
+	    x = arr[star][data]['ra'];
+	    x = (x*200);
+	    y = (y*200+30);
+	}
+	else if(mode == 'bed'){
+	    x = Math.sin(arr[star][data]['az']) * arr[star][data]['dist'] * 400;
+	    y = Math.cos(arr[star][data]['az']) * arr[star][data]['dist'] * 400;
+	    x+=600;y+=600;
+	}
+	else{
+	    x = Math.sin(arr[star][data]['ra']) * arr[star][data]['dist'] * 40;
+	    y = Math.cos(arr[star][data]['ra']) * arr[star][data]['dist'] * 40;
+	    x+=600;y+=600;
+	}
+	html+='<div onmouseover="showInfo(event,\''+star+'\')" class="sta '+star+'" style="left:'+(x)+'px;top:'+(y)+'px;"></div>';
+    }
+}
+el = document.getElementById('stars');
+el.innerHTML = html;
+
+*/

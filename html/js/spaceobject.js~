@@ -1,0 +1,242 @@
+function createHTMLCategories(){
+    for(cat in cats){
+	var _li = '<li id="'+cat+'" n='+cats[cat]['sort']+'><span>'+cats[cat]['name']+'</span><ul></ul></li>';
+	// append in correct order
+	$('#nav > ul > li').each(function(){
+	    if( parseInt($(this).attr('n')) > cats[cat]['sort']){
+		$(this).before(_li);_li='';
+	    }
+	});
+	if(!$('#nav li#'+cat).length){
+	    $('#nav > ul').append(_li);
+	}
+    }
+}
+
+function SpaceObjHTML(spObj){
+    this.spObj = spObj;
+    this.init = function(){
+	// add html navigation
+	var _li = $('<li class="body" id="'+this.spObj.id+'">'+this.spObj.name+'</div></li>');
+	//_li.append(' Rot: '+Math.floor(360./(Math.PI*2)*this.spObj.deltaAz)+'&deg; Dist:'+this.spObj.dist+'AU Size:'+this.spObj.size+'AU');
+
+	if(this.spObj.symbol != undefined)
+	    _li.prepend('<div class="symbol"><img src="img/'+this.spObj.symbol+'" widht="12" height="12" /></div>');
+	_li.data('spObj',this.spObj).click(function(ev){
+	    // deactivate old one
+	    if($('#nav li.act').length)
+		$('#nav li.act').removeClass('act').data('spObj').hideInfo();
+
+	    $(this).addClass('act');
+	    var spObj = $(this).data('spObj');
+	    spObj.showInfo();
+	    // update infobox 
+	    $('#infobox .info .title').empty().append(spObj.name);
+	    if(spObj.symbol != undefined)
+		$('#infobox .info .title').prepend('<img src="img/'+spObj.symbol+'"/>');
+	    $('#infobox .info .pic').empty();
+	    if(spObj.pic != undefined)
+		$('#infobox .info .pic').append('<img src="img/'+spObj.pic+'"/>');
+	    $('#infobox .info .val-dist').empty().append(spObj.dist);
+	    $('#infobox .info .val-rot').empty().append(((180./Math.PI)*spObj.deltaAz).toFixed(2));
+	    $('#infobox .info .val-size').empty().append(spObj.size);
+	});
+	$('#nav li#'+this.spObj.category+'>ul').append(_li);
+    }
+}
+
+function SpaceObj(arraydata,radius){
+    this.id = arraydata['id'];
+    this.name = arraydata['name'];
+    this.category = arraydata['category'];
+    this.color = arraydata['color'];
+    this.symbol = arraydata['symbol'];
+    this.pic = arraydata['pic'];
+    this.size = arraydata['size'];
+    this.dist = arraydata['dist'];
+    this.data = arraydata['data'];
+    this.radius = radius;
+    this.GroupSunnySide = new Kinetic.Group();
+    this.GroupShadySide = new Kinetic.Group();
+    this.GroupInfo = new Kinetic.Group();
+    this.deltaAz = 0;
+    this.htmlRepresentation = new SpaceObjHTML(this);
+    this.htmlRepresentation.init();
+    
+    /* METHODS */
+    this.updateData = function(arraydata){
+	this.data = arraydata['data'];
+	// calc revolutions
+	var _oldAZ = this.data[0]['az'];var _crosses = 0;
+	for(var i in this.data){
+	    if(Math.abs(_oldAZ-this.data[i]['az']) > Math.PI){// passed north
+		dbg("passed north: "+this.name+";"+(_oldAZ-Math.PI*2));
+		_crosses++;
+		this.deltaAz+=(_oldAZ-Math.PI*2)-this.data[i]['az'];
+	    }
+	    else{
+		this.deltaAz+=_oldAZ-this.data[i]['az'];
+	    }
+	    _oldAZ = this.data[i]['az'];
+	}
+	// generate new graphs
+	this.calcInfoPath();
+	this.calcPath();
+    }
+    this.setPathStroke = function(color,strokeWidth){
+	var _childs = this.GroupShadySide.getChildren();
+	for(var i in _childs){
+	    _childs[i].setStroke(color);
+	    _childs[i].setStrokeWidth(strokeWidth);
+	    _childs[i].moveToTop();
+	}
+	_childs = this.GroupSunnySide.getChildren();
+	for(var i in _childs){
+	    _childs[i].setStroke(color);
+	    _childs[i].setStrokeWidth(strokeWidth);
+	    _childs[i].moveToTop();
+	}
+	this.GroupShadySide.parent.draw();
+	this.GroupSunnySide.parent.draw();
+    }
+    this.showInfo = function(){
+	this.GroupInfo.setOpacity(1.0);
+	this.GroupInfo.transitionTo({opacity:1.0,duration:1});//.setOpacity(1.0);
+	this.setPathStroke(this.color,4);
+
+	this.GroupShadySide.moveToTop();
+	this.GroupSunnySide.moveToTop();
+	this.GroupShadySide.setOpacity(1.0);
+	this.GroupSunnySide.setOpacity(1.0);
+	this.GroupShadySide.parent.draw();
+	this.GroupSunnySide.parent.draw();
+    }
+    this.hideInfo = function(){
+	this.GroupInfo.transitionTo({opacity:0.01,duration:.1});//.setOpacity(1.0);
+	this.setPathStroke(this.color,2);
+
+	this.GroupShadySide.setOpacity(0.5);
+	this.GroupSunnySide.setOpacity(0.5);
+	this.GroupShadySide.parent.draw();
+	this.GroupSunnySide.parent.draw();
+    }
+//strokeWidth: Math.max(3,this.size*.01),
+    this.createPath = function(points,sunnySide){
+	// create new shape objectby point array
+	//            lineCap: "round",lineJoin: "round",
+	//            strokeWidth: Math.min(9,this.size*.1),
+	//            dashArray: [4, 8]
+	//            stroke: (sunnySide==1)?this.color['color']:this.color['darkcolor'],
+	var _shape = new Kinetic.Line({
+	    points:points,
+            stroke: this.color,
+            strokeWidth: 2,
+	    dashArray: [4, 4]
+	});
+	// add to corresponding group
+	if(sunnySide==1)
+	    this.GroupSunnySide.add(_shape);
+	else
+	    this.GroupShadySide.add(_shape);
+    }
+    this.addCoords = function(points,az,alt){
+	_coords = XYZ2XY(AzAlt2XYZ(this.radius,az,alt));
+	points[points.length] = _coords[0];
+	points[points.length] = _coords[1];
+    }
+    this.calcInfoPath = function(){
+	// clear groups
+	this.GroupInfo.removeChildren();
+
+	var _points = [0,0];
+	var _resolution = Math.PI/16;
+	// infograph: arch for angles
+	// az-angle
+	if(this.deltaAz < Math.PI*2){
+	    for(var j=0;j<Math.abs(this.data[this.data.length-1]['az']-this.data[0]['az']);j+=_resolution){
+		this.addCoords(_points,j+this.data[0]['az'],0);
+	    }
+	}
+	else{// full circle
+	    for(var j=0;j<Math.PI*2;j+=_resolution){
+		this.addCoords(_points,j+this.data[0]['az'],0);
+	    }
+	}
+	    //this.addCoords(_points,this.data[0]['az'],0);
+	_points[_points.length] = 0;_points[_points.length] = 0;
+	this.GroupInfo.add(new Kinetic.Polygon({
+	    points:_points,
+	    stroke:'grey',
+	    strokeWidth: .5,
+	    fill:this.color,
+	    opacity:0.3
+	}));
+
+	// 1st alt angle
+	_points = [0,0];
+	for(var j=0;j<Math.abs(this.data[0]['alt']);j+=_resolution){
+	    this.addCoords(_points,this.data[0]['az'],(this.data[0]['alt']<0)?-j:j);
+	}
+	this.addCoords(_points,this.data[0]['az'],this.data[0]['alt']);
+	this.GroupInfo.add(new Kinetic.Polygon({
+	    points:_points,
+	    stroke:'grey',
+	    strokeWidth: .5,
+	    fill:'rgba(100,100,100,.13)'
+	}));
+	// last alt angle
+	_points = [0,0];
+	for(var j=0;j<Math.abs(this.data[this.data.length-1]['alt']);j+=_resolution){
+	    this.addCoords(_points,this.data[this.data.length-1]['az'],(this.data[this.data.length-1]['alt']<0)?-j:j);
+	}
+	this.addCoords(_points,this.data[this.data.length-1]['az'],this.data[this.data.length-1]['alt']);
+	this.GroupInfo.add(new Kinetic.Polygon({
+	    points:_points,
+	    stroke:'grey',
+	    strokeWidth: .5,
+	    fill:'rgba(100,100,100,.13)'
+	}));
+	_points = [];
+    }
+    this.calcPath = function(){
+	// clear groups
+	this.GroupSunnySide.removeChildren();
+	this.GroupShadySide.removeChildren();
+	// calc
+	var oldSunnyUp = -1;var sunnyUp = 1;var _coords;
+	var _points = [];
+	for(var i in this.data){
+	    // create dotted lines
+	    if(this.data[i]['alt'] <= 0)// on dark side
+		sunnyUp = 0;
+	    else
+		sunnyUp = 1;
+	    if(oldSunnyUp !=-1 && oldSunnyUp != sunnyUp){// is changing rise
+		// add last point exactly on horizon
+		this.addCoords(_points,this.data[i]['az'],this.data[i]['alt']);
+		// finished for this round, create shape
+		this.createPath(_points,oldSunnyUp);
+		//
+		// new one!
+		oldSunnyUp = sunnyUp;
+		_points = [];
+		// add first point exactly on horizon
+		this.addCoords(_points,this.data[i]['az'],this.data[i]['alt']);
+	    }
+	    if(oldSunnyUp ==-1){oldSunnyUp=sunnyUp;}
+	    this.addCoords(_points,this.data[i]['az'],this.data[i]['alt']);
+	}
+	this.createPath(_points,sunnyUp);
+
+    }
+    this.getGroup = function(name){
+	switch(name){
+	    case 'sunny':
+	    return this.GroupSunnySide;
+	    case 'shady':
+	    return this.GroupShadySide;
+	    case 'info':
+	    return this.GroupInfo;
+	}
+    }
+}
