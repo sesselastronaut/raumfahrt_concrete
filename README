@@ -1,1 +1,13 @@
+this is ground control for 'dormant space travel'
+--------------------------------------------------
+
+TODOS:
++GMT correction in nasa_csvparser.py
+	-set locale to uk?-> DATE: %h returns Dec in English (locale based?)
+
+
++ correct the 1023-0 return data on sensor (between 0-10Deg angle) 
++ implement recalibration of "north" - absolute 0deg on sensor
++ implement python protocol for diagnostic stuff 
+(combining what I sent today with the other python code so basically you can send different "instructions" to the arduino).
 space is the place
