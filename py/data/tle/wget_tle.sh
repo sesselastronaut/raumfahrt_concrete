@@ -1,6 +1,6 @@
 #/bin/bash
 echo "_____login"
-wget -d --cookies=on --keep-session-cookies --save-cookies cookies.txt     --post-data 'username=olsen&password=Trafalmador3&_submit=Submit&_submitted=1' https://www.space-track.org/perl/login.pl
+wget -d --cookies=on --keep-session-cookies --save-cookies cookies.txt     --post-data 'username=olsen&password=PASSWORTGEHEIMHIER&_submit=Submit&_submitted=1' https://www.space-track.org/perl/login.pl
 rm login.pl
 sleep 3
 echo "_____get catalag data"
