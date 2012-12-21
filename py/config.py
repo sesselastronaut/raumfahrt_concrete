@@ -1,7 +1,12 @@
 #CSV Files from: http://ssd.jpl.nasa.gov/?horizons
+#TLE Files from: http://space-track.org/
 '''
 version 0.3
 created: olsen
+edited: 2012-12-20 olsen
+notes:
+- new order 
+- fixed some datasource
 edited: 2012-12-14 flx
 notes: 
 - added RZALT SETTINGS (RZALT for json exports to be interpreted by html interface)
@@ -40,24 +45,24 @@ CELESTIAL_BODY_CATEGORIES = {
         'name':'b. Erdtrabanten',
         'sort':1,
         },
-    "stars":{
-        'name':'c. Sterne',
+    "spacedebris":{
+        'name':'c. Weltraumschrott',
         'sort':2,
         },
-    "spacedebris":{
-        'name':'d. Weltraumschrott',
+    "spaceprobes":{
+        'name':'d. Raumsonden',
         'sort':3,
         },
-    "asteroids":{
-        'name':'e. Asteroiden',
+    "stars":{
+        'name':'e. Sterne',
         'sort':4,
         },
     "comets":{
         'name':'f. Kometen',
         'sort':5,
         },
-    "spaceprobes":{
-        'name':'g. Raumsonden',
+    "asteroids":{
+        'name':'g. Asteroiden',
         'sort':6,
         },
     "constellations":{
@@ -163,8 +168,8 @@ CELESTIAL_BODY = {
         'color': '#ffffff',
         'symbol':'ISS_insignia.svg',
         'datatype': 'tle',
-        'sourcefile': 'data/tle/amateur.txt', 
-        #tle from http://www.celestrak.com/NORAD/elements/amateur.txt
+        'sourcefile': 'data/tle/catalog.txt', 
+        # or http://www.celestrak.com/NORAD/elements/amateur.txt
     },
     
 #Raumsonden__Space-Probes_______________________________________________
@@ -188,12 +193,12 @@ CELESTIAL_BODY = {
     },
     "hubble": {
         'active': 0,
-        'name': 'Hubble',
+        'name': 'HST',
         'category': 'spaceprobes',
         'color': '#ffffff',
         'symbol':'Hubble_logo.svg',
-        'datatype': 'nasacsv',
-        'sourcefile': 'data/nasacsv/hubble.csv', ################<-noch checkern
+        'datatype': 'tle',
+        'sourcefile': 'data/tle/catalog.txt', 
     },
     
 #Weltraumschrott__Space_Debris__________________________________________
@@ -203,7 +208,7 @@ CELESTIAL_BODY = {
         'category': 'spacedebris',
         'color': '#ffffff',
         'datatype': 'tle', 
-        'sourcefile': 'data/tle/visual.txt', #http://www.celestrak.com/Norad/elements/visual.txt
+        'sourcefile': 'data/tle/catalog.txt', # or http://www.celestrak.com/Norad/elements/visual.txt
     },
     #Vanguard 1
     "vanguard_1": {
@@ -318,6 +323,7 @@ CELESTIAL_BODY = {
     },
 #Kometen___comets_______________________________________________________
 	#Georges Perec
+		#unknown
 	#1P/Halley
     "halley": {
         'active': 1,
@@ -338,20 +344,20 @@ CELESTIAL_BODY = {
 	},
     #Galaxien___Galaxies____________________________________________________
     #M 31 aka Andromeda Galaxy aka C/2002 Y1 (Juels-Holvorcem)
-    #http://www.maa.mhn.de/Tools/Xephem/Messier.edb
+    #Data from http://www.maa.mhn.de/Tools/Xephem/Messier.edb
     "M31": {
         'active': 0,
         'name': 'M 31',
         'category': 'galaxies',
         'color': '#ffffff',
         'datatype': 'pyephem',
-        'class': 'ephem.readdb("M31,f|G,0:42:44,+41:16:8,4.16,2000,11433|3700|35")', ###############<-noch checkern
+        'class': 'ephem.readdb("M31,f|G,0:42:44,+41:16:8,4.16,2000,11433|3700|35")', 
     },
 #Gegenerde___Globus_Cassus______________________________________________
 	#Antichton
 	"antichton": {
         'active': 1,
-        'name': 'Antichton - Gegensonne',
+        'name': 'Antichton - Gegenerde',
         'category': 'stars',
         'color': '#ffff00',
         'datatype': 'pyephem', # Same direction as the Sun

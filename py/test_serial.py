@@ -52,7 +52,7 @@ def myprogram():
 			print "---initiating serialtest---"
 			
 			#Change path to your local directory if you want
-			f = open('./data/sensor/sensorTest.dat','w');
+			f = open('./data/sensor/sensorTest-4-5V-CW_rotation.dat','w');
 					
 			#This string initialises the data logging. Presumably you have just reset the arduino before running this python code		
 			sentString = "S"
