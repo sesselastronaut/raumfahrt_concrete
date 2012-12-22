@@ -259,6 +259,37 @@ CELESTIAL_BODY = {
         'datatype': 'pyephem',
         'class': 'ephem.star("Antares")'
     },
+    "sirius": {
+        'active': 1,
+        'name': 'Antares',
+        'category': 'stars',
+        'color': '#ffffff',
+        'pic':'pic-antares.png',
+        'distance': '550ly',
+        'datatype': 'pyephem',
+        'class': 'ephem.star("Sirius")'
+    },
+    "polaris": {
+        'active': 1,
+        'name': 'Antares',
+        'category': 'stars',
+        'color': '#ffffff',
+        'pic':'pic-antares.png',
+        'distance': '550ly',
+        'datatype': 'pyephem',
+        'class': 'ephem.star("Polaris")'
+    },
+    "vega": {
+        'active': 1,
+        'name': 'Antares',
+        'category': 'stars',
+        'color': '#ffffff',
+        'pic':'pic-antares.png',
+        'distance': '550ly',
+        'datatype': 'pyephem',
+        'class': 'ephem.star("Vega")'
+    },
+    
     
 #Sternkonstellationen___Constellations__________________________________
 	#Cassopeia -> using star Schedar which is part of the constellation
@@ -291,7 +322,7 @@ CELESTIAL_BODY = {
         'datatype': 'pyephem', 
         'class': 'ephem.star("Megrez")'
     },
-    #Orion/Sirius
+    #Orion -> using Betelgeuse
     "orion": {
         'active': 1,
         'name': 'Orion',
@@ -301,7 +332,7 @@ CELESTIAL_BODY = {
         'pic':'pic-orion.png',
         'distance': '8.60ly',
         'datatype': 'pyephem', 
-        'class': 'ephem.star("Sirius")'
+        'class': 'ephem.star("Betelgeuse")'
     },
 
 #Asteroiden___Asteroids_________________________________________________
