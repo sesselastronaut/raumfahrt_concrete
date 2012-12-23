@@ -241,7 +241,7 @@ CELESTIAL_BODY = {
 #Sterne___Stars_________________________________________________________
     "aldebaran": {
         'active': 1,
-        'name': 'Aldebaran',
+        'name': 'Aldebaran (α Tauri)',
         'category': 'stars',
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
@@ -251,7 +251,7 @@ CELESTIAL_BODY = {
     },
     "antares": {
         'active': 1,
-        'name': 'Antares',
+        'name': 'Antares (α Scorpii)',
         'category': 'stars',
         'color': '#ffffff',
         'pic':'pic-antares.png',
@@ -261,7 +261,7 @@ CELESTIAL_BODY = {
     },
     "sirius": {
         'active': 1,
-        'name': 'Antares',
+        'name': 'Sirius (α Canis Majoris)',
         'category': 'stars',
         'color': '#ffffff',
         'pic':'pic-antares.png',
@@ -271,7 +271,7 @@ CELESTIAL_BODY = {
     },
     "polaris": {
         'active': 1,
-        'name': 'Antares',
+        'name': 'Polaris (α Ursae Minoris)',
         'category': 'stars',
         'color': '#ffffff',
         'pic':'pic-antares.png',
@@ -281,7 +281,7 @@ CELESTIAL_BODY = {
     },
     "vega": {
         'active': 1,
-        'name': 'Antares',
+        'name': 'Vega',
         'category': 'stars',
         'color': '#ffffff',
         'pic':'pic-antares.png',
@@ -298,6 +298,8 @@ CELESTIAL_BODY = {
         'name': 'Cassopeia',
         'category': 'constellations',
         'color': '#ffffff',
+        'symbol':'Cassiopeia.svg',
+        'pic':'pic-cassiopeia.png',
         'distance': '228ly',
         'datatype': 'pyephem', 
         'class': 'ephem.star("Schedar")'
@@ -305,9 +307,11 @@ CELESTIAL_BODY = {
 	#Southerncross -> using star Mimosa which is part of constellation
 	"southerncross": {
         'active': 1,
-        'name': 'S&uuml;dkreuz',
+        'name': 'S&uuml;dkreuz (Crux)',
         'category': 'constellations',
         'color': '#ffffff',
+        'symbol':'Southerncross.svg',
+        'pic':'pic-southerncross.png',
         'distance': '280ly',
         'datatype': 'pyephem', 
         'class': 'ephem.star("Mimosa")'
@@ -315,9 +319,11 @@ CELESTIAL_BODY = {
 	#Big Bear or Das Reiterlein im grossen Wagen -> using star Megrez 
 	"big_bear": {
         'active': 1,
-        'name': 'Grosser B&auml;r',
+        'name': 'Grosser B&auml;r (Ursa Major)',
         'category': 'constellations',
         'color': '#ffffff',
+        'symbol':'Big_Bear-Ursa_Major.svg',
+        'pic':'pic-big_bear-ursa_major.png',
         'distance': '58.4ly',
         'datatype': 'pyephem', 
         'class': 'ephem.star("Megrez")'
@@ -373,7 +379,7 @@ CELESTIAL_BODY = {
         'datatype': 'nasacsv',
         'sourcefile': 'data/nasacsv/ISON.csv', 
 	},
-    #Galaxien___Galaxies____________________________________________________
+#Galaxien___Galaxies____________________________________________________
     #M 31 aka Andromeda Galaxy aka C/2002 Y1 (Juels-Holvorcem)
     #Data from http://www.maa.mhn.de/Tools/Xephem/Messier.edb
     "M31": {
