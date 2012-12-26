@@ -90,6 +90,7 @@ CELESTIAL_BODY = {
         'category': 'planets',
         'color': 'blue',
         'symbol':'Mercury_symbol.svg',
+        'pic':'pic-mercury.png',	
         'datatype': 'pyephem',
         'class': 'ephem.Mercury()'
     },
@@ -384,7 +385,7 @@ CELESTIAL_BODY = {
     #Data from http://www.maa.mhn.de/Tools/Xephem/Messier.edb
     "M31": {
         'active': 0,
-        'name': 'M 31',
+        'name': 'M 31 - Andromeda',
         'category': 'galaxies',
         'color': '#ffffff',
         'datatype': 'pyephem',
