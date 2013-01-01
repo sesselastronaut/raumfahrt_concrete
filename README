@@ -13,7 +13,7 @@ TODOS:
 --html--
 + spaceprobes 'hubble'; spacedebris 'Vanguard 1', 'Cosmos 382' & 'Cosmos 1818' is not recognized by rzalttojson.py 
 + Category for Galaxies eg. 'M 31 - Andromeda'
-+ path to pics is missing in 'infobox b'
++ path to pics is missing in 'infobox b' <div class="pic"></div>
 
 ---------------------------------------------------
 space is the place
