@@ -78,6 +78,7 @@ CELESTIAL_BODY = {
         'category': 'stars',
         'color': '#ffff00',
         'symbol':'Sun_symbol.svg',
+##        'pic':'pic-sun.png',
         'datatype': 'pyephem', # Sun
         'class': 'ephem.Sun()'
         },
@@ -90,7 +91,7 @@ CELESTIAL_BODY = {
         'category': 'planets',
         'color': 'blue',
         'symbol':'Mercury_symbol.svg',
-        'pic':'pic-mercury.png',	
+##        'pic':'pic-mercury.png',	
         'datatype': 'pyephem',
         'class': 'ephem.Mercury()'
     },
@@ -100,6 +101,7 @@ CELESTIAL_BODY = {
         'category': 'planets',
         'color': 'green',
         'symbol':'Venus_symbol.svg',
+        'pic':'pic-venus.png',
         'datatype': 'pyephem', #Venus/Hesperus/Stella Maris/Abendstern/Morgenstern
         'class': 'ephem.Venus()'
     },
@@ -109,6 +111,7 @@ CELESTIAL_BODY = {
         'category': 'planets',
         'color': 'red',
         'symbol':'Mars_symbol.svg',
+##        'pic':'pic-mars.png',
         'datatype': 'pyephem',
         'class': 'ephem.Mars()'
     },
@@ -118,7 +121,7 @@ CELESTIAL_BODY = {
         'category': 'planets',
         'color': 'lightblue',
         'symbol':'Jupiter_symbol.svg',
-        'pic':'pic-jupiter.png',
+##        'pic':'pic-jupiter.png',
         'datatype': 'pyephem',
         'class': 'ephem.Jupiter()'
     },
@@ -127,7 +130,7 @@ CELESTIAL_BODY = {
         'name': 'Saturn',
         'category': 'planets',
         'color': 'pink',
-        'pic':'pic-saturn.png',
+        'pic':'pic-saturn_2.png',
         'symbol':'Saturn_symbol.svg',
         'datatype': 'pyephem',
         'class': 'ephem.Saturn()'
@@ -138,6 +141,7 @@ CELESTIAL_BODY = {
         'category': 'planets',
         'color': 'brown',
         'symbol':'Uranus_symbol.svg',
+##        'pic':'pic-uranus.png',
         'datatype': 'pyephem',
         'class': 'ephem.Uranus()'
     },
@@ -147,6 +151,7 @@ CELESTIAL_BODY = {
         'category': 'planets',
         'color': 'violett',
         'symbol':'Neptune_symbol.svg',
+##        'pic':'pic-neptune.png',
         'datatype': 'pyephem',
         'class': 'ephem.Neptune()'
     },
@@ -168,6 +173,7 @@ CELESTIAL_BODY = {
         'category': 'earthsatellites',
         'color': '#ffffff',
         'symbol':'ISS_insignia.svg',
+        'pic':'pic-iss.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt', 
         # or http://www.celestrak.com/NORAD/elements/amateur.txt
@@ -180,6 +186,7 @@ CELESTIAL_BODY = {
         'category': 'spaceprobes',
         'color': '#ffffff',
         'symbol':'Voyager_symbol.svg',
+        'pic':'pic-voyager1.png',
         'datatype': 'nasacsv',
         'sourcefile': 'data/nasacsv/voyager_1.csv',
     },
@@ -189,6 +196,7 @@ CELESTIAL_BODY = {
         'category': 'spaceprobes',
         'color': '#ffffff',
         'symbol':'Voyager_symbol.svg',
+        'pic':'pic-voyager2.png',
         'datatype': 'nasacsv',
         'sourcefile': 'data/nasacsv/voyager_2.csv',
     },
@@ -198,6 +206,7 @@ CELESTIAL_BODY = {
         'category': 'spaceprobes',
         'color': '#ffffff',
         'symbol':'Hubble_logo.svg',
+##        'pic':'pic-hubble.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt', 
     },
@@ -208,6 +217,7 @@ CELESTIAL_BODY = {
         'name': 'Envisat',
         'category': 'spacedebris',
         'color': '#ffffff',
+        'pic':'pic-envisat.png',
         'datatype': 'tle', 
         'sourcefile': 'data/tle/catalog.txt', # or http://www.celestrak.com/Norad/elements/visual.txt
     },
@@ -217,6 +227,7 @@ CELESTIAL_BODY = {
         'name': 'Vanguard 1',
         'category': 'spacedebris',
         'color': '#ffffff',
+        'pic':'pic-vanguard1.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt',
     },
@@ -226,6 +237,7 @@ CELESTIAL_BODY = {
         'name': 'Cosmos 382',
         'category': 'spacedebris',
         'color': '#ffffff',
+        'pic':'pic-cosmos_384.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt',
     },
@@ -235,6 +247,7 @@ CELESTIAL_BODY = {
         'name': 'Cosmos 1818',
         'category': 'spacedebris',
         'color': '#ffffff',
+        'pic':'pic-cosmos_1818.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt',
     },
@@ -246,7 +259,8 @@ CELESTIAL_BODY = {
         'category': 'stars',
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
-        'distance': '65ly',
+        'pic':'pic-aldebaran-rund.png',
+        'distance': '66,6Lj ± 1,0',
         'datatype': 'pyephem',
         'class': 'ephem.star("Aldebaran")'
     },
@@ -255,8 +269,9 @@ CELESTIAL_BODY = {
         'name': 'Antares (α Scorpii)',
         'category': 'stars',
         'color': '#ffffff',
+        'symbol':'Alpha_symbol.svg',
         'pic':'pic-antares.png',
-        'distance': '550ly',
+        'distance': '600Lj',  
         'datatype': 'pyephem',
         'class': 'ephem.star("Antares")'
     },
@@ -265,8 +280,9 @@ CELESTIAL_BODY = {
         'name': 'Sirius (α Canis Majoris)',
         'category': 'stars',
         'color': '#ffffff',
-        'pic':'pic-antares.png',
-        'distance': '550ly',
+        'symbol':'Alpha_symbol.svg',
+        'pic':'pic-sirius.png',
+        'distance': '8,6Lj ± 0,04', 
         'datatype': 'pyephem',
         'class': 'ephem.star("Sirius")'
     },
@@ -275,8 +291,9 @@ CELESTIAL_BODY = {
         'name': 'Polaris (α Ursae Minoris)',
         'category': 'stars',
         'color': '#ffffff',
-        'pic':'pic-antares.png',
-        'distance': '550ly',
+        'symbol':'Alpha_symbol.svg',
+        'pic':'pic-polaris.png',
+        'distance': '431Lj ± 27', 
         'datatype': 'pyephem',
         'class': 'ephem.star("Polaris")'
     },
@@ -285,8 +302,9 @@ CELESTIAL_BODY = {
         'name': 'Vega',
         'category': 'stars',
         'color': '#ffffff',
-        'pic':'pic-antares.png',
-        'distance': '550ly',
+        'symbol':'Alpha_symbol.svg',
+        'pic':'pic-vega.png',
+        'distance': '25,0Lj ± 0,1',
         'datatype': 'pyephem',
         'class': 'ephem.star("Vega")'
     },
@@ -301,7 +319,7 @@ CELESTIAL_BODY = {
         'color': '#ffffff',
         'symbol':'Cassiopeia.svg',
         'pic':'pic-cassiopeia.png',
-        'distance': '228ly',
+#        'distance': '120Lj',
         'datatype': 'pyephem', 
         'class': 'ephem.star("Schedar")'
     },
@@ -313,7 +331,7 @@ CELESTIAL_BODY = {
         'color': '#ffffff',
         'symbol':'Southerncross.svg',
         'pic':'pic-southerncross.png',
-        'distance': '280ly',
+#        'distance': '353ly',
         'datatype': 'pyephem', 
         'class': 'ephem.star("Mimosa")'
     },
@@ -325,7 +343,6 @@ CELESTIAL_BODY = {
         'color': '#ffffff',
         'symbol':'Big_Bear-Ursa_Major.svg',
         'pic':'pic-big_bear-ursa_major.png',
-        'distance': '58.4ly',
         'datatype': 'pyephem', 
         'class': 'ephem.star("Megrez")'
     },
@@ -337,7 +354,6 @@ CELESTIAL_BODY = {
         'color': '#ffffff',
         'symbol':'Orion_IAU.svg',
         'pic':'pic-orion.png',
-        'distance': '8.60ly',
         'datatype': 'pyephem', 
         'class': 'ephem.star("Betelgeuse")'
     },
@@ -348,6 +364,8 @@ CELESTIAL_BODY = {
         'name': '243 Ida',
         'category': 'asteroids',
         'color': '#ffffff',
+##        'symbol':'Orion_IAU.svg',
+        'pic':'pic-243_ida.png',
         'datatype': 'nasacsv',
         'sourcefile': 'data/nasacsv/243_Ida.csv',
     },
@@ -356,6 +374,8 @@ CELESTIAL_BODY = {
         'name': '2010 TK7',
         'category': 'asteroids',
         'color': '#ffffff',
+##        'symbol':'Orion_IAU.svg',
+        'pic':'pic-2010_TK7.png',
         'datatype':  'nasacsv',
         'sourcefile': 'data/nasacsv/2010_TK7.csv',
     },
@@ -365,18 +385,22 @@ CELESTIAL_BODY = {
 	#1P/Halley
     "halley": {
         'active': 1,
-        'name': 'Halley',
+        'name': '1P/Halley',
         'category': 'comets',
         'color': '#ffffff',
+##        'symbol':'Orion_IAU.svg',
+        'pic':'pic-halley.png',
         'datatype': 'nasacsv',
         'sourcefile': 'data/nasacsv/halley.csv',
     },
 	#ISON C/2012 S1 
     "ISON": {
         'active': 1,
-        'name': 'ISON',
+        'name': 'ISON C/2012 S1',
         'category': 'comets',
         'color': '#ffffff',
+##        'symbol':'Orion_IAU.svg',
+        'pic':'pic-ISON_C-2012.png',
         'datatype': 'nasacsv',
         'sourcefile': 'data/nasacsv/ISON.csv', 
 	},
@@ -388,16 +412,20 @@ CELESTIAL_BODY = {
         'name': 'M 31 - Andromeda',
         'category': 'galaxies',
         'color': '#ffffff',
+##        'symbol':'Orion_IAU.svg',
+        'pic':'pic-M31.png',        
         'datatype': 'pyephem',
         'class': 'ephem.readdb("M31,f|G,0:42:44,+41:16:8,4.16,2000,11433|3700|35")', 
     },
 #Gegenerde___Globus_Cassus______________________________________________
-	#Antichton
-	"antichton": {
+	#Antichthon
+	"antichthon": {
         'active': 1,
-        'name': 'Antichton - Gegenerde',
+        'name': 'Antichthon - Gegenerde',
         'category': 'stars',
         'color': '#ffff00',
+        'symbol':'Antichthon.svg',
+        'pic':'Antichthon.png', 
         'datatype': 'pyephem', # Same direction as the Sun
         'class': 'ephem.Sun()'
         },
