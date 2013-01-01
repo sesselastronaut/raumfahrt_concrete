@@ -255,7 +255,7 @@ CELESTIAL_BODY = {
 #Sterne___Stars_________________________________________________________
     "aldebaran": {
         'active': 1,
-        'name': 'Aldebaran (α Tauri)',
+        'name': 'Aldebaran (-Tauri)',
         'category': 'stars',
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
@@ -266,7 +266,7 @@ CELESTIAL_BODY = {
     },
     "antares": {
         'active': 1,
-        'name': 'Antares (α Scorpii)',
+        'name': 'Antares (-Scorpii)',
         'category': 'stars',
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
@@ -277,7 +277,7 @@ CELESTIAL_BODY = {
     },
     "sirius": {
         'active': 1,
-        'name': 'Sirius (α Canis Majoris)',
+        'name': 'Sirius (-Canis Majoris)',
         'category': 'stars',
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
@@ -288,7 +288,7 @@ CELESTIAL_BODY = {
     },
     "polaris": {
         'active': 1,
-        'name': 'Polaris (α Ursae Minoris)',
+        'name': '(Ursae Minoris) - Polaris ',
         'category': 'stars',
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
