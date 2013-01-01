@@ -91,7 +91,7 @@ CELESTIAL_BODY = {
         'category': 'planets',
         'color': 'blue',
         'symbol':'Mercury_symbol.svg',
-##        'pic':'pic-mercury.png',	
+        'pic':'pic-mercury.png',	
         'datatype': 'pyephem',
         'class': 'ephem.Mercury()'
     },
@@ -111,7 +111,7 @@ CELESTIAL_BODY = {
         'category': 'planets',
         'color': 'red',
         'symbol':'Mars_symbol.svg',
-##        'pic':'pic-mars.png',
+        'pic':'pic-mars.png',
         'datatype': 'pyephem',
         'class': 'ephem.Mars()'
     },
@@ -121,7 +121,7 @@ CELESTIAL_BODY = {
         'category': 'planets',
         'color': 'lightblue',
         'symbol':'Jupiter_symbol.svg',
-##        'pic':'pic-jupiter.png',
+        'pic':'pic-jupiter.png',
         'datatype': 'pyephem',
         'class': 'ephem.Jupiter()'
     },
@@ -141,7 +141,7 @@ CELESTIAL_BODY = {
         'category': 'planets',
         'color': 'brown',
         'symbol':'Uranus_symbol.svg',
-##        'pic':'pic-uranus.png',
+        'pic':'pic-uranus.png',
         'datatype': 'pyephem',
         'class': 'ephem.Uranus()'
     },
@@ -151,7 +151,7 @@ CELESTIAL_BODY = {
         'category': 'planets',
         'color': 'violett',
         'symbol':'Neptune_symbol.svg',
-##        'pic':'pic-neptune.png',
+        'pic':'pic-neptune.png',
         'datatype': 'pyephem',
         'class': 'ephem.Neptune()'
     },
@@ -206,12 +206,13 @@ CELESTIAL_BODY = {
         'category': 'spaceprobes',
         'color': '#ffffff',
         'symbol':'Hubble_logo.svg',
-##        'pic':'pic-hubble.png',
+        'pic':'pic-hubble.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt', 
     },
     
 #Weltraumschrott__Space_Debris__________________________________________
+	#Envisat
 	"envisat": {
         'active': 1,
         'name': 'Envisat',
@@ -260,7 +261,7 @@ CELESTIAL_BODY = {
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
         'pic':'pic-aldebaran-rund.png',
-        'distance': '66,6Lj ± 1,0',
+        'distance': '65ly',
         'datatype': 'pyephem',
         'class': 'ephem.star("Aldebaran")'
     },
@@ -271,7 +272,7 @@ CELESTIAL_BODY = {
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
         'pic':'pic-antares.png',
-        'distance': '600Lj',  
+        'distance': '600ly',  
         'datatype': 'pyephem',
         'class': 'ephem.star("Antares")'
     },
@@ -282,7 +283,7 @@ CELESTIAL_BODY = {
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
         'pic':'pic-sirius.png',
-        'distance': '8,6Lj ± 0,04', 
+        'distance': '8.60ly', # +- 0,04 
         'datatype': 'pyephem',
         'class': 'ephem.star("Sirius")'
     },
@@ -293,7 +294,7 @@ CELESTIAL_BODY = {
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
         'pic':'pic-polaris.png',
-        'distance': '431Lj ± 27', 
+        'distance': '431ly', # +- 27
         'datatype': 'pyephem',
         'class': 'ephem.star("Polaris")'
     },
@@ -303,8 +304,8 @@ CELESTIAL_BODY = {
         'category': 'stars',
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
-        'pic':'pic-vega.png',
-        'distance': '25,0Lj ± 0,1',
+        'pic':'pic-vega.png', 
+        'distance': '25.00ly', # +- 0,1
         'datatype': 'pyephem',
         'class': 'ephem.star("Vega")'
     },
@@ -319,7 +320,7 @@ CELESTIAL_BODY = {
         'color': '#ffffff',
         'symbol':'Cassiopeia.svg',
         'pic':'pic-cassiopeia.png',
-#        'distance': '120Lj',
+        'distance': '120ly',
         'datatype': 'pyephem', 
         'class': 'ephem.star("Schedar")'
     },
@@ -331,7 +332,7 @@ CELESTIAL_BODY = {
         'color': '#ffffff',
         'symbol':'Southerncross.svg',
         'pic':'pic-southerncross.png',
-#        'distance': '353ly',
+        'distance': '353ly',
         'datatype': 'pyephem', 
         'class': 'ephem.star("Mimosa")'
     },
@@ -343,6 +344,7 @@ CELESTIAL_BODY = {
         'color': '#ffffff',
         'symbol':'Big_Bear-Ursa_Major.svg',
         'pic':'pic-big_bear-ursa_major.png',
+        'distance': '58.4ly',  ##checkern
         'datatype': 'pyephem', 
         'class': 'ephem.star("Megrez")'
     },
@@ -354,6 +356,7 @@ CELESTIAL_BODY = {
         'color': '#ffffff',
         'symbol':'Orion_IAU.svg',
         'pic':'pic-orion.png',
+        'distance': '8.60ly', ##checkern
         'datatype': 'pyephem', 
         'class': 'ephem.star("Betelgeuse")'
     },
