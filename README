@@ -2,12 +2,18 @@ this is ground control for 'dormant space travel'
 --------------------------------------------------
 
 TODOS:
-+GMT correction in nasa_csvparser.py
-	-set locale to uk?-> DATE: %h returns Dec in English (locale based?)
+--py--
++ GMT correction in nasa_csvparser.py - set locale to uk?-> DATE: %h returns Dec in English (locale based?)
 
-
+--arduino---
 + correct the 1023-0 return data on sensor (between 0-10Deg angle) 
 + implement recalibration of "north" - absolute 0deg on sensor
 + implement python protocol for diagnostic stuff 
-(combining what I sent today with the other python code so basically you can send different "instructions" to the arduino).
+
+--html--
++ spaceprobes 'hubble'; spacedebris 'Vanguard 1', 'Cosmos 382' & 'Cosmos 1818' is not recognized by rzalttojson.py 
++ Category for Galaxies eg. 'M 31 - Andromeda'
++ path to pics is missing in 'infobox b'
+
+---------------------------------------------------
 space is the place
