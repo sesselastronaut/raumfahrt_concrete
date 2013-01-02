@@ -212,8 +212,8 @@ CELESTIAL_BODY = {
     },
     
 #Weltraumschrott__Space_Debris__________________________________________
-	#Envisat
-	"envisat": {
+    #Envisat
+    "envisat": {
         'active': 1,
         'name': 'Envisat',
         'category': 'spacedebris',
