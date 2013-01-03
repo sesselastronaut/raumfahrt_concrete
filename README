@@ -10,8 +10,8 @@ TODOS:
 + implement python protocol for diagnostic stuff 
 
 --html--
-+ spaceprobes 'hubble'; spacedebris 'Vanguard 1', 'Cosmos 382' & 'Cosmos 1818' is not recognized by rzalttojson.py 
-+ Category for Galaxies eg. 'M 31 - Andromeda'
++ Zeile "1.Die Rotationen der Himmelskörper innerhalb der nächsten 7 Stunden" höher
++ Seitenleiste mit Auswahl Kante beachten evtl. Select Buttoni, mit welchem das Menü ausfährt und nach 5 Sekunden Inaktivität wieder einfährt
 + path to pics is missing in 'infobox b' <div class="pic"></div>
 + rotation of Polaris is too big
 ---------------------------------------------------

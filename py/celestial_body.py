@@ -52,7 +52,7 @@ while 1:
 		logging.debug("using tle parser")
 		tle_file =  open (celestial_body["sourcefile"])
 		city = eval(OBSERVER)
-		satelite_name = celestial_body["name"] #goto
+		satelite_name = celestial_body["parsekey"] #goto
 		position = tle_parser.get_tle_az(tle_file, satelite_name, city) * degrees_per_radian
 	else:
 		logging.debug("ERRRRRRRRRRRROR. Config file is wrong")

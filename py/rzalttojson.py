@@ -96,12 +96,18 @@ if __name__ == '__main__':
                 body = eval(CELESTIAL_BODY[b]["class"])
             elif CELESTIAL_BODY[b]['datatype'] == 'tle':
                 tle_file = open(CELESTIAL_BODY[b]["sourcefile"])
-                data_headline,data_row_1,data_row_2 = tle_parser.get_tle_data(tle_file, b)
+                #print b
+                #print "tle file:"
+                #print tle_file
+                data_headline,data_row_1,data_row_2 = tle_parser.get_tle_data(tle_file, CELESTIAL_BODY[b]["parsekey"])
+                #print "TLE data for readtle:"
+                #print data_headline,data_row_1,data_row_2
                 body = ephem.readtle(
                     data_headline,
                     data_row_1,
                     data_row_2
                     )
+                tle_file.close()
             elif CELESTIAL_BODY[b]['datatype'] == 'nasacsv':
                 startDate = datetime.datetime.now().strftime("%Y-%h-%d %H:%M")
                 endDate = ephem.localtime( ephem.Date( datenow+RZALT_TIMESPAN_HOURS*ephem.hour ) ).strftime("%Y-%h-%d %H:%M")

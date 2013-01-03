@@ -1,8 +1,11 @@
 #CSV Files from: http://ssd.jpl.nasa.gov/?horizons
 #TLE Files from: http://space-track.org/
 '''
-version 0.3
+version 0.4
 created: olsen
+edited: 2013-1-4 olsen
+notes: 
+- added parsekey to config for tlefiles
 edited: 2012-12-20 olsen
 notes:
 - new order 
@@ -68,6 +71,10 @@ CELESTIAL_BODY_CATEGORIES = {
     "constellations":{
         'name':'h. Konstellationen',
         'sort':7,
+        },
+    "galaxies":{
+        'name':'i. Galaxien',
+        'sort':8,
         },
 }
 CELESTIAL_BODY = {
@@ -170,6 +177,7 @@ CELESTIAL_BODY = {
     "iss": {
         'active': 1,
         'name': 'ISS (Internationale Raumstation)',
+        'parsekey': 'ISS (ZARYA)',
         'category': 'earthsatellites',
         'color': '#ffffff',
         'symbol':'ISS_insignia.svg',
@@ -201,8 +209,9 @@ CELESTIAL_BODY = {
         'sourcefile': 'data/nasacsv/voyager_2.csv',
     },
     "hubble": {
-        'active': 0,
-        'name': 'HST',
+        'active': 1,
+        'name': 'Hubble Space Telescope',
+        'parsekey': 'HST',
         'category': 'spaceprobes',
         'color': '#ffffff',
         'symbol':'Hubble_logo.svg',
@@ -216,6 +225,7 @@ CELESTIAL_BODY = {
     "envisat": {
         'active': 1,
         'name': 'Envisat',
+        'parsekey': 'ENVISAT',
         'category': 'spacedebris',
         'color': '#ffffff',
         'pic':'pic-envisat.png',
@@ -224,8 +234,9 @@ CELESTIAL_BODY = {
     },
     #Vanguard 1
     "vanguard_1": {
-        'active': 0,
+        'active': 1,
         'name': 'Vanguard 1',
+        'parsekey': 'VANGUARD 1',
         'category': 'spacedebris',
         'color': '#ffffff',
         'pic':'pic-vanguard1.png',
@@ -234,8 +245,9 @@ CELESTIAL_BODY = {
     },
     #Cosmos 382 
     "cosmos_382": {
-        'active': 0,
+        'active': 1,
         'name': 'Cosmos 382',
+        'parsekey': 'COSMOS 382',
         'category': 'spacedebris',
         'color': '#ffffff',
         'pic':'pic-cosmos_384.png',
@@ -244,8 +256,9 @@ CELESTIAL_BODY = {
     },
     #Kosmos 1818 
     "cosmos_1818": {
-        'active': 0,
+        'active': 1,
         'name': 'Cosmos 1818',
+        'parsekey': 'COSMOS 1818',
         'category': 'spacedebris',
         'color': '#ffffff',
         'pic':'pic-cosmos_1818.png',
@@ -411,12 +424,13 @@ CELESTIAL_BODY = {
     #M 31 aka Andromeda Galaxy aka C/2002 Y1 (Juels-Holvorcem)
     #Data from http://www.maa.mhn.de/Tools/Xephem/Messier.edb
     "M31": {
-        'active': 0,
+        'active': 1,
         'name': 'M 31 - Andromeda',
         'category': 'galaxies',
         'color': '#ffffff',
 ##        'symbol':'Orion_IAU.svg',
-        'pic':'pic-M31.png',        
+        'pic':'pic-M31.png',   
+        'distance': '8.60ly', ##checkern     
         'datatype': 'pyephem',
         'class': 'ephem.readdb("M31,f|G,0:42:44,+41:16:8,4.16,2000,11433|3700|35")', 
     },
