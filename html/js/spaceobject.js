@@ -34,7 +34,7 @@ function SpaceObjHTML(spObj){
 		$('.infobox .info .title').prepend('<img src="img/'+spObj.symbol+'"/>');
 	    $('.infobox .info .pic').empty();
 	    if(spObj.pic != undefined)
-		$('#infobox .info .pic').append('<img src="img/'+spObj.pic+'"/>');
+		$('.infobox .info .pic').append('<img src="img/'+spObj.pic+'"/>');
 	    $('.infobox .info .val-dist').empty().append(spObj.dist);
 	    $('.infobox .info .val-rot').empty().append(((-180./Math.PI)*spObj.deltaAz).toFixed(2))+";"+spObj.deltaAz;
 	    $('.infobox .info .val-size').empty().append(spObj.size);
