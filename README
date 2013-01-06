@@ -6,11 +6,11 @@ TODOS:
 
 --arduino---
 + correct the 1023-0 return data on sensor (between 0-10Deg angle) 
-+ implement recalibration of "north" - absolute 0deg on sensor
-+ implement python protocol for diagnostic stuff 
++ implement python protocol for diagnostic stuff and to store the current North Reference.
 
 --html--
 + sichtbare Grösse in ° korrekte Einheit?
++ Infos zu Weltraumschrott
 + Zeile "1.Die Rotationen der Himmelskörper innerhalb der nächsten 7 Stunden" höher setzen
 + Seitenleiste mit Auswahl Kante beachten evtl. Select Buttoni, mit welchem das Menü ausfährt und nach 5 Sekunden Inaktivität wieder einfährt
 + rotation of Polaris is too big?
