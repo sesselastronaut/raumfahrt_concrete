@@ -10,9 +10,9 @@ TODOS:
 + implement python protocol for diagnostic stuff 
 
 --html--
-+ Zeile "1.Die Rotationen der Himmelskörper innerhalb der nächsten 7 Stunden" höher
++ sichtbare Grösse in ° korrekte Einheit?
++ Zeile "1.Die Rotationen der Himmelskörper innerhalb der nächsten 7 Stunden" höher setzen
 + Seitenleiste mit Auswahl Kante beachten evtl. Select Buttoni, mit welchem das Menü ausfährt und nach 5 Sekunden Inaktivität wieder einfährt
-+ path to pics is missing in 'infobox b' <div class="pic"></div>
-+ rotation of Polaris is too big
++ rotation of Polaris is too big?
 ---------------------------------------------------
 space is the place

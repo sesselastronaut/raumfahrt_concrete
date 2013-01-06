@@ -85,7 +85,7 @@ CELESTIAL_BODY = {
         'category': 'stars',
         'color': '#ffff00',
         'symbol':'Sun_symbol.svg',
-##        'pic':'pic-sun.png',
+        'pic':'pic-sun.png',
         'datatype': 'pyephem', # Sun
         'class': 'ephem.Sun()'
         },

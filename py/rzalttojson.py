@@ -51,8 +51,7 @@ def fillArr(obj,meta,id):
         if 'symbol' in meta:
             coords[id]['symbol'] = meta['symbol']
         if 'pic' in meta:
-            coords[id]['pic'] = meta['pic']
-            
+            coords[id]['pic'] = meta['pic']       
         if(meta['datatype'] == 'nasacsv'):
             coords[id]['dist'] = obj['delta']
         elif(type(obj) == ephem.FixedBody):
