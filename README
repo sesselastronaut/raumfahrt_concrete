@@ -9,6 +9,7 @@ TODOS:
 + implement python protocol for diagnostic stuff and to store the current North Reference.
 
 --html--
++ Infofeld unter 'Sichtbare Grösse'
 + sichtbare Grösse in ° korrekte Einheit?
 + Infos zu Weltraumschrott
 + Zeile "1.Die Rotationen der Himmelskörper innerhalb der nächsten 7 Stunden" höher setzen
