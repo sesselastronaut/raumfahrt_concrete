@@ -228,6 +228,7 @@ CELESTIAL_BODY = {
         'parsekey': 'ENVISAT',
         'category': 'spacedebris',
         'color': '#ffffff',
+        'symbol':'Envisat.svg',
         'pic':'pic-envisat.png',
         'datatype': 'tle', 
         'sourcefile': 'data/tle/catalog.txt', # or http://www.celestrak.com/Norad/elements/visual.txt
@@ -239,6 +240,7 @@ CELESTIAL_BODY = {
         'parsekey': 'VANGUARD 1',
         'category': 'spacedebris',
         'color': '#ffffff',
+        'symbol':'Satellite.svg',
         'pic':'pic-vanguard1.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt',
@@ -250,6 +252,7 @@ CELESTIAL_BODY = {
         'parsekey': 'COSMOS 382',
         'category': 'spacedebris',
         'color': '#ffffff',
+        'symbol':'Satellite.svg',
         'pic':'pic-cosmos_384.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt',
@@ -261,6 +264,7 @@ CELESTIAL_BODY = {
         'parsekey': 'COSMOS 1818',
         'category': 'spacedebris',
         'color': '#ffffff',
+        'symbol':'Satellite.svg',
         'pic':'pic-cosmos_1818.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt',
@@ -269,7 +273,7 @@ CELESTIAL_BODY = {
 #Sterne___Stars_________________________________________________________
     "aldebaran": {
         'active': 1,
-        'name': '(-Tauri) Aldebaran',
+        'name': '-Tauri - Aldebaran',
         'category': 'stars',
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
@@ -280,7 +284,7 @@ CELESTIAL_BODY = {
     },
     "antares": {
         'active': 1,
-        'name': '(-Scorpii) Antares',
+        'name': '-Scorpii - Antares',
         'category': 'stars',
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
@@ -291,7 +295,7 @@ CELESTIAL_BODY = {
     },
     "sirius": {
         'active': 1,
-        'name': '(-Canis Majoris) Sirius',
+        'name': '-Canis Majoris - Sirius',
         'category': 'stars',
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
@@ -302,7 +306,7 @@ CELESTIAL_BODY = {
     },
     "polaris": {
         'active': 1,
-        'name': '(-Ursae Minoris) Polaris ',
+        'name': '-Ursae Minoris - Polaris ',
         'category': 'stars',
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
