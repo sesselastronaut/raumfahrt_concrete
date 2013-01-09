@@ -1,6 +1,7 @@
 this is ground control for 'dormant space travel'
 --------------------------------------------------
 TODOS:
+
 --py--
 
 --arduino---
@@ -13,5 +14,6 @@ TODOS:
 + Zeile "1.Die Rotationen der Himmelskörper innerhalb der nächsten 7 Stunden" höher setzen
 + Seitenleiste mit Auswahl Kante beachten evtl. Select Buttoni, mit welchem das Menü ausfährt und nach 5 Sekunden Inaktivität wieder einfährt
 + rotation of Polaris is too big?
++ Voyager II rotation negative
 ---------------------------------------------------
 space is the place

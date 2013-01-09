@@ -56,25 +56,29 @@ CELESTIAL_BODY_CATEGORIES = {
         'name':'d. Raumsonden',
         'sort':3,
         },
-    "stars":{
-        'name':'e. Sterne',
+    "globus_cassus":{
+        'name':'e. Gegenerde',
         'sort':4,
         },
-    "comets":{
-        'name':'f. Kometen',
+    "stars":{
+        'name':'f. Sterne',
         'sort':5,
         },
-    "asteroids":{
-        'name':'g. Asteroiden',
+    "comets":{
+        'name':'g. Kometen',
         'sort':6,
         },
-    "constellations":{
-        'name':'h. Konstellationen',
+    "asteroids":{
+        'name':'h. Asteroiden',
         'sort':7,
         },
-    "galaxies":{
-        'name':'i. Galaxien',
+    "constellations":{
+        'name':'i. Konstellationen',
         'sort':8,
+        },
+    "galaxies":{
+        'name':'j. Galaxien',
+        'sort':9,
         },
 }
 CELESTIAL_BODY = {
@@ -240,7 +244,7 @@ CELESTIAL_BODY = {
         'parsekey': 'VANGUARD 1',
         'category': 'spacedebris',
         'color': '#ffffff',
-        'symbol':'Satellite.svg',
+        'symbol':'Satellite2.svg',
         'pic':'pic-vanguard1.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt',
@@ -273,7 +277,7 @@ CELESTIAL_BODY = {
 #Sterne___Stars_________________________________________________________
     "aldebaran": {
         'active': 1,
-        'name': '-Tauri - Aldebaran',
+        'name': '- Tauri - Aldebaran',
         'category': 'stars',
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
@@ -284,7 +288,7 @@ CELESTIAL_BODY = {
     },
     "antares": {
         'active': 1,
-        'name': '-Scorpii - Antares',
+        'name': '- Scorpii - Antares',
         'category': 'stars',
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
@@ -295,7 +299,7 @@ CELESTIAL_BODY = {
     },
     "sirius": {
         'active': 1,
-        'name': '-Canis Majoris - Sirius',
+        'name': '- Canis Majoris - Sirius',
         'category': 'stars',
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
@@ -306,7 +310,7 @@ CELESTIAL_BODY = {
     },
     "polaris": {
         'active': 1,
-        'name': '-Ursae Minoris - Polaris ',
+        'name': '- Ursae Minoris - Polaris ',
         'category': 'stars',
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
@@ -443,7 +447,7 @@ CELESTIAL_BODY = {
 	"antichthon": {
         'active': 1,
         'name': 'Antichthon - Gegenerde',
-        'category': 'stars',
+        'category': 'globus_cassus',
         'color': '#ffff00',
         'symbol':'Antichthon.svg',
         'pic':'pic-antichthon.png', 
