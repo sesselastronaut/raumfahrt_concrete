@@ -442,7 +442,7 @@ CELESTIAL_BODY = {
         'category': 'stars',
         'color': '#ffff00',
         'symbol':'Antichthon.svg',
-        'pic':'Antichthon.png', 
+        'pic':'pic-antichthon.png', 
         'datatype': 'pyephem', # Same direction as the Sun
         'class': 'ephem.Sun()'
         },

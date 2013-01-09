@@ -1,31 +1,26 @@
 # -*- coding: utf-8 -*-
 import datetime
+import os
 #import codecs
 import subprocess
 import datetime
+import sys
 #import time
+from utils import strptime
+import pytz
 
-# TODOS - set locale to uk?
-# DATE: %h returns Dec in English (loacale based?)
-
-
-def get_position_by_date(file,date):
-    if type(date)==datetime.datetime:
-        date = date.strftime("%Y-%h-%d %H:%M")
-    try:
-        line = subprocess.check_output("grep " + "'" + date + "' " + file, shell=True)
-    except:
-        p = subprocess.Popen("grep " + "'" + date + "' " + file, shell=True, stdout=subprocess.PIPE)
-        line = p.communicate()[0]
-    line = line.split(",")
-    line = {"date" : date, "azi"  : line[3], "elev" : line[4], "delta" : line[5], "deldot" : line[6]}
-
-    return line
-    
 
 def get_position(file):
-    now = datetime.datetime.now()
-    return get_position_by_date(file,now)
+
+    # nasa_csv is utc time
+    now = datetime.datetime.now(pytz.utc)
+    now = now.strftime("%Y-%h-%d %H:%M")
+    line = subprocess.check_output("grep " + "'" + now + "' " + file, shell=True)
+    line = line.split(",")
+    line = {"date" : now, "azi"  : line[3], "elev" : line[4], "delta" : line[5], "deldot" : line[6]}
+
+    return line
+
 
 
 """Returns a json version of the NASA CSV
@@ -82,9 +77,6 @@ def get_positions_today_json(file):
 
 
 if __name__ == '__main__':
-    import os
-    import sys
-    from utils import strptime
 
     if len(sys.argv) < 2:
         sys.exit('Usage: %s nasa-csv-file' % sys.argv[0])
@@ -93,5 +85,5 @@ if __name__ == '__main__':
         sys.exit('ERROR: NASA CSV File %s was not found!' % sys.argv[1])
 
     file = sys.argv[1]
-    today_json = get_positions_today_json(file)
+    today_json = get_position(file)
     print today_json

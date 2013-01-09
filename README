@@ -2,7 +2,6 @@ this is ground control for 'dormant space travel'
 --------------------------------------------------
 TODOS:
 --py--
-+ GMT correction in nasa_csvparser.py - set locale to uk?-> DATE: %h returns Dec in English (locale based?)
 
 --arduino---
 + correct the 1023-0 return data on sensor (between 0-10Deg angle) 
