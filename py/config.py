@@ -56,25 +56,29 @@ CELESTIAL_BODY_CATEGORIES = {
         'name':'d. Raumsonden',
         'sort':3,
         },
-    "stars":{
-        'name':'e. Sterne',
+    "globus_cassus":{
+        'name':'e. Gegenerde',
         'sort':4,
         },
-    "comets":{
-        'name':'f. Kometen',
+    "stars":{
+        'name':'f. Sterne',
         'sort':5,
         },
-    "asteroids":{
-        'name':'g. Asteroiden',
+    "comets":{
+        'name':'g. Kometen',
         'sort':6,
         },
-    "constellations":{
-        'name':'h. Konstellationen',
+    "asteroids":{
+        'name':'h. Asteroiden',
         'sort':7,
         },
-    "galaxies":{
-        'name':'i. Galaxien',
+    "constellations":{
+        'name':'i. Konstellationen',
         'sort':8,
+        },
+    "galaxies":{
+        'name':'j. Galaxien',
+        'sort':9,
         },
 }
 CELESTIAL_BODY = {
@@ -228,6 +232,7 @@ CELESTIAL_BODY = {
         'parsekey': 'ENVISAT',
         'category': 'spacedebris',
         'color': '#ffffff',
+        'symbol':'Envisat.svg',
         'pic':'pic-envisat.png',
         'datatype': 'tle', 
         'sourcefile': 'data/tle/catalog.txt', # or http://www.celestrak.com/Norad/elements/visual.txt
@@ -239,6 +244,7 @@ CELESTIAL_BODY = {
         'parsekey': 'VANGUARD 1',
         'category': 'spacedebris',
         'color': '#ffffff',
+        'symbol':'Satellite2.svg',
         'pic':'pic-vanguard1.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt',
@@ -250,6 +256,7 @@ CELESTIAL_BODY = {
         'parsekey': 'COSMOS 382',
         'category': 'spacedebris',
         'color': '#ffffff',
+        'symbol':'Satellite.svg',
         'pic':'pic-cosmos_384.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt',
@@ -261,6 +268,7 @@ CELESTIAL_BODY = {
         'parsekey': 'COSMOS 1818',
         'category': 'spacedebris',
         'color': '#ffffff',
+        'symbol':'Satellite.svg',
         'pic':'pic-cosmos_1818.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt',
@@ -269,7 +277,7 @@ CELESTIAL_BODY = {
 #Sterne___Stars_________________________________________________________
     "aldebaran": {
         'active': 1,
-        'name': '(-Tauri) Aldebaran',
+        'name': '- Tauri - Aldebaran',
         'category': 'stars',
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
@@ -280,7 +288,7 @@ CELESTIAL_BODY = {
     },
     "antares": {
         'active': 1,
-        'name': '(-Scorpii) Antares',
+        'name': '- Scorpii - Antares',
         'category': 'stars',
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
@@ -291,7 +299,7 @@ CELESTIAL_BODY = {
     },
     "sirius": {
         'active': 1,
-        'name': '(-Canis Majoris) Sirius',
+        'name': '- Canis Majoris - Sirius',
         'category': 'stars',
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
@@ -302,7 +310,7 @@ CELESTIAL_BODY = {
     },
     "polaris": {
         'active': 1,
-        'name': '(-Ursae Minoris) Polaris ',
+        'name': '- Ursae Minoris - Polaris ',
         'category': 'stars',
         'color': '#ffffff',
         'symbol':'Alpha_symbol.svg',
@@ -380,7 +388,7 @@ CELESTIAL_BODY = {
         'name': '243 Ida',
         'category': 'asteroids',
         'color': '#ffffff',
-##        'symbol':'Orion_IAU.svg',
+        'symbol':'Asteroid.svg',
         'pic':'pic-243_ida.png',
         'datatype': 'nasacsv',
         'sourcefile': 'data/nasacsv/243_Ida.csv',
@@ -390,7 +398,7 @@ CELESTIAL_BODY = {
         'name': '2010 TK7',
         'category': 'asteroids',
         'color': '#ffffff',
-##        'symbol':'Orion_IAU.svg',
+        'symbol':'Asteroid.svg',
         'pic':'pic-2010_TK7.png',
         'datatype':  'nasacsv',
         'sourcefile': 'data/nasacsv/2010_TK7.csv',
@@ -404,7 +412,7 @@ CELESTIAL_BODY = {
         'name': '1P/Halley',
         'category': 'comets',
         'color': '#ffffff',
-##        'symbol':'Orion_IAU.svg',
+        'symbol':'Comet.svg',
         'pic':'pic-halley.png',
         'datatype': 'nasacsv',
         'sourcefile': 'data/nasacsv/halley.csv',
@@ -415,7 +423,7 @@ CELESTIAL_BODY = {
         'name': 'ISON C/2012 S1',
         'category': 'comets',
         'color': '#ffffff',
-##        'symbol':'Orion_IAU.svg',
+        'symbol':'Comet.svg',
         'pic':'pic-ISON_C-2012.png',
         'datatype': 'nasacsv',
         'sourcefile': 'data/nasacsv/ISON.csv', 
@@ -428,7 +436,7 @@ CELESTIAL_BODY = {
         'name': 'M 31 - Andromeda',
         'category': 'galaxies',
         'color': '#ffffff',
-##        'symbol':'Orion_IAU.svg',
+        'symbol':'Galaxy.svg',
         'pic':'pic-M31.png',   
         'distance': '8.60ly', ##checkern     
         'datatype': 'pyephem',
@@ -439,10 +447,10 @@ CELESTIAL_BODY = {
 	"antichthon": {
         'active': 1,
         'name': 'Antichthon - Gegenerde',
-        'category': 'stars',
+        'category': 'globus_cassus',
         'color': '#ffff00',
         'symbol':'Antichthon.svg',
-        'pic':'Antichthon.png', 
+        'pic':'pic-antichthon.png', 
         'datatype': 'pyephem', # Same direction as the Sun
         'class': 'ephem.Sun()'
         },

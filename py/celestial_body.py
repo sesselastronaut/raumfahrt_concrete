@@ -46,6 +46,7 @@ while 1:
 		logging.debug("using nasa_csvparser")
 		csvfile =  celestial_body["sourcefile"]
 		position = nasa_csvparser.get_position(csvfile)
+		logging.debug("London GMT / UTC time:" + position["date"])
 		position = position["azi"]
 	
 	elif celestial_body["datatype"] == 'tle':

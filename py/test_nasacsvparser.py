@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from nasa_csvparser.nasa_csvparser import *
 
-file = "nasa_csvparser/VoyagerI.txt"
+file = "data/nasa_csvparser/voyager_1.csv"
 voyager_position = get_position(file)
 print voyager_position
 print "Date: " + voyager_position["date"]
