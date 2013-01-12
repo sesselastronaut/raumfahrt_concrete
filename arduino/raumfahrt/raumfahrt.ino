@@ -6,8 +6,28 @@ decrease Kp
 increase Ki 
 */
 
+
+/*
+
+Python Comm Protocol:
+'s9999'
+s - character representing command
+
+ 'c' - current angle
+ 't' - target angle
+ 'r' - current reference
+ 'm' - reset display mode
+
+stands for
+9999 - value
+
+*/
+
+
 const int analogInPin = A0;
 const int analogOutPin = 9;
+const int resetNorthPin = 5;
+
 float theta_current; 
 float theta_desired;
 float error = 0;
@@ -20,6 +40,14 @@ const float Ki = 0; //0.001;
 float analogVoltage; 
 int digitalVoltage;// value output to the PWM (voltage out)
 float corrected_analogVoltage;
+float northReferenceAngle;
+
+
+int resetNorthVal;
+int serialPrintMode = 2; 
+// 1 - Continous printing for human readable output, 
+// 2 - Python serialcom mode
+
 char inputString [10];         // incoming serial byte
 char inputNum[5];
 float valueReceived;
@@ -38,6 +66,11 @@ void setup() {
   Serial.begin(9600);
   pinMode(2, INPUT);
   digitalWrite(2, LOW);
+  
+  // ResertNorthPin
+  pinMode(resetNorthPin,INPUT);
+  digitalWrite(resetNorthPin,HIGH);
+ 
   //attachInterrupt(0, serialInterrupt, CHANGE);
   // Used to signal that main loop is alive.
   pinMode(4, OUTPUT);
@@ -89,7 +122,14 @@ void serialInterrupt()
     Serial.print(" , Value :");
     Serial.println(valueReceived);
     */
-    theta_desired = valueReceived;
+    
+    switch(inputString[0]){
+      case 't': theta_desired = valueReceived; break;
+      case 'r': northReferenceAngle = valueReceived; break;
+      case 'p': serialPrintMode = 2; break;
+      case 'h' : serialPrintMode = 1;break;
+      default: break;
+    }
  }   
   // Job done.
   inService = false;
@@ -99,11 +139,14 @@ void serialInterrupt()
 
 void ground_control(float theta_current)
 {
-      if(firstTime  == true)
+
+   if(firstTime  == true)
     {
       theta_desired = theta_current;
       //buf[0] = theta_desired;
-      Serial.println("reset");
+      if(serialPrintMode == 1) {
+        Serial.println("reset");
+      }
       attachInterrupt(0, serialInterrupt, CHANGE);
       firstTime = false;
       inService = false;
@@ -150,22 +193,50 @@ void ground_control(float theta_current)
     
   //  Serial.print("desired = "); //coming from python through serial number between 0 and 360°
  //   Serial.print(buf[0]);   
-    Serial.print("theta_desired = ");
-    Serial.print(theta_desired);
-    Serial.print(" | theta_current = ");      
-    Serial.print(theta_current);
-    Serial.print(" | error = ");
-    Serial.print(error);
-    Serial.print(" | error_previous = ");
-    Serial.print(error_previous);
-    Serial.print(" | error_Dot = ");
-    Serial.print(error_Dot);
-    Serial.print(" | error_Total = ");
-    Serial.print(error_total);
-    Serial.print(" | analogVoltage = ");
-    Serial.println(analogVoltage);
-   
-    error_previous = error;
+    if(serialPrintMode == 1) {
+      Serial.print("theta_desired = ");
+      Serial.print(theta_desired);
+      Serial.print(" | theta_current = ");      
+      Serial.print(theta_current);
+      Serial.print(" | error = ");
+      Serial.print(error);
+      Serial.print(" | error_previous = ");
+      Serial.print(error_previous);
+      Serial.print(" | error_Dot = ");
+      Serial.print(error_Dot);
+      Serial.print(" | error_Total = ");
+      Serial.print(error_total);
+      Serial.print(" | analogVoltage = ");
+      Serial.println(analogVoltage);
+    }
+    else
+    {  
+      Serial.print('c');
+      if(theta_current!=0){
+        Serial.println(int(10*theta_current));
+      }
+      else {
+        Serial.println('0000');
+      }  
+      
+      Serial.print('t');
+      if(theta_desired!=0){
+        Serial.println(int(10*theta_desired));
+      }
+      else {
+        Serial.println('0000');
+      }
+      
+      Serial.print('r');
+      if(northReferenceAngle!=0){
+        Serial.println(int(10*northReferenceAngle));
+      }
+      else {
+        Serial.println(9999);
+      }
+   }   
+   error_previous = error;
+    
 }
 
 
@@ -184,17 +255,33 @@ void loop(){
   
   loop_ctr = loop_ctr + 1;
 
-  if(loop_ctr == 9) {
-  loop_ctr = 0;  
-  theta_current = 0.0;
-  for( int i = 0; i<10; i++) {
-      theta_current = theta_current + sensor_window[i];
-    }
-    theta_current = theta_current/10;
-    ground_control(theta_current);
-  }
-  delay(10);
+    if(loop_ctr == 9) {
+    loop_ctr = 0;  
+    theta_current = 0.0;
+      for( int i = 0; i<10; i++) {
+        theta_current = theta_current + sensor_window[i];
+      }
+      theta_current = theta_current/10;
+           
+      resetNorthVal = digitalRead(resetNorthPin);
+      if(resetNorthVal == 0)
+      {
+        theta_current = theta_current - northReferenceAngle;
+        ground_control(theta_current);
+        delay(10);
+      } 
+      else{ 
+        digitalVoltage = 5;
+        northReferenceAngle = theta_current;
     
+        if(serialPrintMode == 1) {
+         Serial.print(" ResetingNorthMode | ");
+         Serial.print(" NewNorthAngle = ");
+         Serial.println(theta_current);
+        }
+        delay(10);
+      }
+  }
 }
 
 
