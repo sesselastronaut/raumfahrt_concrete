@@ -9,10 +9,9 @@ TODOS:
 + implement python protocol for diagnostic stuff and to store the current North Reference.
 
 --html--
-+ Infofeld unter 'Sichtbare Grösse'
++ load last selected celestial body that is written in data.json
++ In Infofeld b Platz für 1-2 Sätze unter 'Sichtbare Grösse' -> Infos zu Weltraumschrott
 + sichtbare Grösse in ° korrekte Einheit?
-+ Infos zu Weltraumschrott
-+ Zeile "1.Die Rotationen der Himmelskörper innerhalb der nächsten 7 Stunden" höher setzen
 + Seitenleiste mit Auswahl Kante beachten evtl. Select Buttoni, mit welchem das Menü ausfährt und nach 5 Sekunden Inaktivität wieder einfährt
 + rotation of Polaris is too big?
 + Voyager II rotation negative
