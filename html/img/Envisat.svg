@@ -14,7 +14,7 @@
    version="1.1"
    id="svg16967"
    inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="Orion_IAU.svg">
+   sodipodi:docname="Envisat.svg">
   <metadata
      id="metadata20579">
     <rdf:RDF>
@@ -23,7 +23,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -44,7 +44,7 @@
      inkscape:snap-to-guides="false"
      inkscape:object-nodes="true"
      inkscape:zoom="12.431794"
-     inkscape:cx="12.706031"
+     inkscape:cx="-0.60660915"
      inkscape:cy="25.787381"
      inkscape:window-x="0"
      inkscape:window-y="1"
@@ -10451,7 +10451,7 @@
   </defs>
   <path
      inkscape:connector-curvature="0"
-     style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
      id="path2423"
      d="M 18.939271,0.08431276 C 10.45825,0.53542421 2.8917473,6.4049963 0.69433955,15.070155 -2.0111524,25.735853 4.4402978,36.584337 15.104971,39.290345 22.682215,41.212493 30.365785,38.512999 35.139242,32.963701 33.04033,33.465454 30.583956,33.498911 27.917956,32.580267 18.989753,29.497322 17.353649,21.235116 19.578332,15.453588 21.800062,9.6716731 29.579485,6.9766501 34.979481,10.852392 39.60778,14.171776 39.862022,20.085858 39.83627,21.716328 40.688002,12.148457 34.524429,3.0993534 24.914401,0.65946171 22.914796,0.15236833 20.89644,-0.01978642 18.939271,0.08431276 z M 9.2256827,17.658329 c 1.4159003,0 2.5562113,1.141218 2.5562113,2.556222 0,1.415889 -1.140311,2.556218 -2.5562113,2.556218 -1.4148899,0 -2.5881604,-1.140329 -2.5881604,-2.556218 1.17e-5,-1.415004 1.1732705,-2.556222 2.5881604,-2.556222 z" />
 </svg>

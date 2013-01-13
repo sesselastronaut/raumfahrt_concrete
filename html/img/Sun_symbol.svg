@@ -11,7 +11,7 @@
    height="50"
    id="svg13201"
    version="1.1"
-   inkscape:version="0.48.1 r9760"
+   inkscape:version="0.48.3.1 r9886"
    sodipodi:docname="Sun_symbol.svg">
   <metadata
      id="metadata13209">
@@ -35,19 +35,20 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="640"
-     inkscape:window-height="480"
+     inkscape:window-width="1440"
+     inkscape:window-height="857"
      id="namedview13205"
      showgrid="false"
      inkscape:zoom="5.84"
      inkscape:cx="25"
      inkscape:cy="25"
      inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
+     inkscape:window-y="1"
+     inkscape:window-maximized="1"
      inkscape:current-layer="svg13201" />
   <path
      d="m 0.49316324,24.981925 a 24.506849,24.506849 0 1 1 0,0.13615 z m 4.08447486,0 a 20.422374,20.422374 0 1 0 0,-0.136149 z m 14.9764079,0 a 5.4459665,5.4459665 0 1 0 0,-0.136149 z"
      id="path13203"
-     inkscape:connector-curvature="0" />
+     inkscape:connector-curvature="0"
+     style="stroke:none;stroke-opacity:1;fill:#fffffe;fill-opacity:1" />
 </svg>
