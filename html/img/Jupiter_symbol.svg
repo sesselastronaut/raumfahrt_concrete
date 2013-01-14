@@ -13,7 +13,7 @@
    height="50"
    id="svg34864"
    sodipodi:version="0.32"
-   inkscape:version="0.48.1 r9760"
+   inkscape:version="0.48.3.1 r9886"
    version="1.0"
    sodipodi:docname="Jupiter_symbol.svg">
   <defs
@@ -29,16 +29,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="5.6"
-     inkscape:cx="40.112546"
+     inkscape:cx="10.558975"
      inkscape:cy="23.612944"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
-     inkscape:window-width="853"
-     inkscape:window-height="573"
-     inkscape:window-x="236"
-     inkscape:window-y="145"
+     inkscape:window-width="1440"
+     inkscape:window-height="857"
+     inkscape:window-x="0"
+     inkscape:window-y="1"
      showgrid="false"
-     inkscape:window-maximized="0" />
+     inkscape:window-maximized="1" />
   <metadata
      id="metadata34869">
     <rdf:RDF>
@@ -56,17 +56,17 @@
      id="layer1"
      transform="translate(-348.7552,-478.0905)">
     <path
-       style="color:#000000;fill:none;stroke:#000000;stroke-width:4.40349913;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible"
+       style="color:#000000;fill:none;stroke:#ffffff;stroke-width:4.40349913000000015;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible"
        d="m 386.62742,479.36634 0,48.51849"
        id="path6576"
        inkscape:connector-curvature="0" />
     <path
-       style="color:#000000;fill:none;stroke:#000000;stroke-width:4.40349913;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible"
+       style="color:#000000;fill:none;stroke:#ffffff;stroke-width:4.40349913000000015;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible"
        d="m 394.62584,515.4442 -38.65904,0"
        id="path6578"
        inkscape:connector-curvature="0" />
     <path
-       style="color:#000000;fill:none;stroke:#000000;stroke-width:4.40349913;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible"
+       style="color:#000000;fill:none;stroke:#ffffff;stroke-width:4.40349913000000015;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible"
        d="m 359.96601,496.78324 c -1.33307,0 -3.99921,-1.24406 -3.99921,-6.22033 0,-4.97626 5.33228,-9.9525 10.66457,-9.9525 5.33228,0 10.66456,3.73218 10.66456,12.44063 0,8.70845 -6.66535,22.39316 -19.99606,22.39316"
        id="path6580"
        sodipodi:nodetypes="czzzz"

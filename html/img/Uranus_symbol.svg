@@ -13,7 +13,7 @@
    height="50"
    id="svg34864"
    sodipodi:version="0.32"
-   inkscape:version="0.48.1 r9760"
+   inkscape:version="0.48.3.1 r9886"
    version="1.0"
    sodipodi:docname="Uranus_symbol.svg">
   <defs
@@ -29,7 +29,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="5.6"
-     inkscape:cx="40.112546"
+     inkscape:cx="10.558975"
      inkscape:cy="23.612944"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -56,35 +56,35 @@
      id="layer1"
      transform="translate(-348.7552,-478.0905)">
     <path
-       style="color:#000000;fill:none;stroke:#000000;stroke-width:3.8874824;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible"
+       style="color:#000000;fill:none;stroke:#ffffff;stroke-width:3.88748240000000012;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible"
        d="m 374.14907,480.60918 0,17.02089"
        id="path23250"
        sodipodi:nodetypes="cc"
        inkscape:connector-curvature="0" />
     <path
-       style="color:#000000;fill:none;stroke:#000000;stroke-width:3.8874824;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible"
+       style="color:#000000;fill:none;stroke:#ffffff;stroke-width:3.88748240000000012;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible"
        d="m 367.54626,487.78675 6.40699,-6.55049 6.55046,6.40703"
        id="path23252"
        inkscape:connector-curvature="0" />
     <path
        sodipodi:type="arc"
-       style="color:#000000;fill:none;stroke:#000000;stroke-width:4.44071674;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible"
+       style="color:#000000;fill:none;stroke:#ffffff;stroke-width:4.44071674000000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible"
        id="path23254"
        sodipodi:cx="33.772552"
        sodipodi:cy="36.70454"
        sodipodi:rx="15.623922"
        sodipodi:ry="16.319134"
-       d="m 49.396475,36.70454 a 15.623922,16.319134 0 1 1 -31.247845,0 15.623922,16.319134 0 1 1 31.247845,0 z"
+       d="m 49.396475,36.70454 c 0,9.012809 -6.995068,16.319134 -15.623923,16.319134 -8.628854,0 -15.623922,-7.306325 -15.623922,-16.319134 0,-9.012808 6.995068,-16.319134 15.623922,-16.319134 8.628855,0 15.623923,7.306326 15.623923,16.319134 z"
        transform="matrix(0.8943335,0,0,0.85690222,344.08697,480.49291)" />
     <path
        sodipodi:type="arc"
-       style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible"
+       style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible"
        id="path23256"
        sodipodi:cx="34"
        sodipodi:cy="37"
        sodipodi:rx="4"
        sodipodi:ry="5"
-       d="m 38,37 a 4,5 0 1 1 -8,0 4,5 0 1 1 8,0 z"
+       d="m 38,37 c 0,2.761424 -1.790861,5 -4,5 -2.209139,0 -4,-2.238576 -4,-5 0,-2.761424 1.790861,-5 4,-5 2.209139,0 4,2.238576 4,5 z"
        transform="matrix(0.87474965,0,0,0.69979998,344.55257,486.06562)" />
   </g>
 </svg>
