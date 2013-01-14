@@ -12,12 +12,18 @@ from tle_parser import tle_parser
 import logging
 import ephem
 import math
+from serial_com import SerialCom
 
 degrees_per_radian = 180.0 / math.pi
 
 # Log everything, and send it to stderr.
 FORMAT = "%(asctime)-15s %(message)s"
 logging.basicConfig(format=FORMAT,level=logging.DEBUG,datefmt='%Y-%m-%d %H:%M:%S')
+
+#Object creation
+sc = SerialCom()
+sc.resetBedFromLog()
+
 
 while 1:
 	logging.debug("-----------------------------")
@@ -59,8 +65,17 @@ while 1:
 		logging.debug("ERRRRRRRRRRRROR. Config file is wrong")
 		continue
 # send to serial port
+
+	#print("PositionText:"+str(int(float(position)*10)))
+	positionTruncInt = int(10*float(position))
+	positionTruncFloat = float(positionTruncInt)/10
+	print(positionTruncFloat)
+	sc.setBedPosition(positionTruncFloat)
 	logging.debug("Sending to serial:")
 	logging.debug(position)
 
 	time.sleep(1)
-
+	sc.receiveData()
+	sc.logBedData()
+	
+	#sc.receiveData()
