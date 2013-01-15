@@ -2,15 +2,21 @@ this is ground control for 'dormant space travel'
 --------------------------------------------------
 TODOS:
 
+startup in 
+cronjob for ./py/data/wget_tle.sh
+
+
 --py--
 
 --arduino---
 + correct the 1023-0 return data on sensor (between 0-10Deg angle) 
-+ implement python protocol for diagnostic stuff and to store the current North Reference.
++ implement new sensor
 
 --html--
 + load last selected celestial body that is written in data.json
-+ In Infofeld b Platz für 1-2 Sätze unter 'Sichtbare Grösse' -> Infos zu Weltraumschrott
++ Radius der Darstellung des Orbits verkleinern/anpassen für 1280x800
++ In Infofeld b Platz für 1-2 Sätze unter 'Sichtbare Grösse' für z.B. Infos zu Weltraumschrott wie 
+bei Vanguard 1 "das älteste noch im Orbit befindliche Objekt" oder bei Cosmos 382 "mit mehr als 10 Tonnen Masse das größte nichtmilitärische Stück Weltraumschrott"
 + sichtbare Grösse in ° korrekte Einheit?
 + Seitenleiste mit Auswahl Kante beachten evtl. Select Buttoni, mit welchem das Menü ausfährt und nach 5 Sekunden Inaktivität wieder einfährt
 + rotation of Polaris is too big?
