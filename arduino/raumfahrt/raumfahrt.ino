@@ -28,6 +28,10 @@ const int analogInPin = A0;
 const int analogOutPin = 9;
 const int resetNorthPin = 5;
 
+int adc_current;
+float theta_m1;
+float theta_m2;
+
 float theta_current; 
 float theta_desired;
 float error = 0;
@@ -41,7 +45,13 @@ float analogVoltage;
 int digitalVoltage;// value output to the PWM (voltage out)
 float corrected_analogVoltage;
 float northReferenceAngle;
+int adc_previous;
+int negator = -1; // this assumes motor positive voltage goes in clockwise otherwise error direction is wrong
 
+//hardhack
+const float sensor_deadZoneMin = 354;
+const float sensor_deadZoneMax = 360;
+const float sensor_deadZoneMid = 357;
 
 int resetNorthVal;
 int serialPrintMode = 2; 
@@ -85,8 +95,39 @@ void setup() {
   digitalVoltage = 0;
   error_total = 0;
   firstTime=true;
+  negator = -1;
 }
 
+String sendFormat(char type, int data)
+{
+  String newData = String(int(data));
+  int numZerosReqd = 4-newData.length();
+  
+  String sentString;
+  switch(numZerosReqd)
+  {
+    case 0: sentString = String(type) + String(data); break;
+    
+    case 1: sentString = String(type) + String('0') + String(data);break;
+    
+    case 2: sentString = String(type) + String("00") + String(data);break;
+    
+    case 3: sentString = String(type) + String("000") + String(data);break;
+        
+    case 4: sentString = String(type) + String("0000");break;
+  }
+  return(sentString);
+}
+
+
+
+void sendStatusOnSerial()
+{
+
+  Serial.println(sendFormat('c',int(10*theta_current)));
+  Serial.println(sendFormat('t',int(10*theta_desired)));
+  Serial.println(sendFormat('r',int(10*northReferenceAngle)));
+}
 
 
 void serialInterrupt()
@@ -130,6 +171,18 @@ void serialInterrupt()
       case 'h' : serialPrintMode = 1;break;
       default: break;
     }
+    
+    
+    //HardHack
+    if(theta_desired - northReferenceAngle >= sensor_deadZoneMin  && theta_desired - northReferenceAngle <= sensor_deadZoneMax) {
+      if(theta_desired - northReferenceAngle > sensor_deadZoneMid){
+        theta_desired = sensor_deadZoneMax + northReferenceAngle;
+      }
+      else{
+        theta_desired = sensor_deadZoneMin + northReferenceAngle; 
+      }
+    }
+
  }   
   // Job done.
   inService = false;
@@ -166,9 +219,9 @@ void ground_control(float theta_current)
     /*else {
       theta_desired = theta_current;
     }*/
-    int negator = -1; // this assumes motor positive voltage goes in clockwise otherwise error direction is wrong
+    
     error = negator*(theta_desired - theta_current);
-    error_total = error_total + error;
+ //   error_total = error_total + error;
     
      
     if (error < -180) {
@@ -194,7 +247,13 @@ void ground_control(float theta_current)
   //  Serial.print("desired = "); //coming from python through serial number between 0 and 360°
  //   Serial.print(buf[0]);   
     if(serialPrintMode == 1) {
-      Serial.print("theta_desired = ");
+      Serial.print("Adc=");
+      Serial.print(adc_current);
+      Serial.print(" | theta_m1=");
+      Serial.print(theta_m1);
+      Serial.print(" | theta_m2=");        
+      Serial.print(theta_m2);
+      Serial.print(" | theta_desired = ");
       Serial.print(theta_desired);
       Serial.print(" | theta_current = ");      
       Serial.print(theta_current);
@@ -203,38 +262,15 @@ void ground_control(float theta_current)
       Serial.print(" | error_previous = ");
       Serial.print(error_previous);
       Serial.print(" | error_Dot = ");
-      Serial.print(error_Dot);
-      Serial.print(" | error_Total = ");
-      Serial.print(error_total);
+      Serial.print(error_Dot);;
       Serial.print(" | analogVoltage = ");
       Serial.println(analogVoltage);
     }
     else
     {  
-      Serial.print('c');
-      if(theta_current!=0){
-        Serial.println(int(10*theta_current));
-      }
-      else {
-        Serial.println('0000');
-      }  
-      
-      Serial.print('t');
-      if(theta_desired!=0){
-        Serial.println(int(10*theta_desired));
-      }
-      else {
-        Serial.println('0000');
-      }
-      
-      Serial.print('r');
-      if(northReferenceAngle!=0){
-        Serial.println(int(10*northReferenceAngle));
-      }
-      else {
-        Serial.println(9999);
-      }
-   }   
+      sendStatusOnSerial();
+    }   
+
    error_previous = error;
     
 }
@@ -246,12 +282,29 @@ void loop(){
 // see what value is coming in
 
 // btween 0 to 1023
-   
-    int adc_current = analogRead(analogInPin); 
+  
+  adc_previous = adc_current; 
+  adc_current = analogRead(analogInPin); 
+  
     
 //calculate the current position in angle degrees
     
-  sensor_window[loop_ctr] = adc_current * 0.3519;  
+  
+  theta_m1 = (float)(adc_current * (355.0/1024.0));
+  theta_m2 = (float)(adc_current * (5.0/1024.0)); 
+
+/*
+  if(adc_previous - adc_current >10 || adc_current - adc_previous > 10)
+  {
+  //sensor_window[loop_ctr] = adc_current * 0.3519;  
+  sensor_window[loop_ctr]= theta_m2;
+  }
+  else
+  {
+    sensor_window[loop_ctr] = theta_m1;
+  }
+  */
+  sensor_window[loop_ctr] = adc_current;
   
   loop_ctr = loop_ctr + 1;
 
@@ -261,24 +314,38 @@ void loop(){
       for( int i = 0; i<10; i++) {
         theta_current = theta_current + sensor_window[i];
       }
-      theta_current = theta_current/10;
+      theta_current = (0.3519) * (theta_current/10);
            
       resetNorthVal = digitalRead(resetNorthPin);
       if(resetNorthVal == 0)
       {
         theta_current = theta_current - northReferenceAngle;
+        if(theta_current<0){
+          theta_current = theta_current+360;
+        }
+         else if(theta_current>360){
+           theta_current = theta_current-360;
+         }
+        
+        
         ground_control(theta_current);
         delay(10);
       } 
       else{ 
         digitalVoltage = 5;
         northReferenceAngle = theta_current;
+        analogWrite(analogOutPin, digitalVoltage*51);
     
         if(serialPrintMode == 1) {
          Serial.print(" ResetingNorthMode | ");
          Serial.print(" NewNorthAngle = ");
          Serial.println(theta_current);
         }
+        else
+        {
+          sendStatusOnSerial();
+        }
+      
         delay(10);
       }
   }

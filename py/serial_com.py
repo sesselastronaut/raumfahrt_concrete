@@ -13,16 +13,17 @@ def switch(numZeros):
 # read from arduino is mode 1 (sensorTest), 
 # write to arduino is mode 2 (rotatingBedTest), 
 # read/write to arduino is mode 3 (checkReferenceAngle and currentAngle) 
-    
+
 
 class SerialCom:
-	def __init__(self,mode):
+	def __init__(self):
 		import sys
 		self.mode = 3
-		self.desiredPos = 0.0
+		self.currentTarget = 0.0
 		self.currentPos = 0.0
-		self.currentNorthPos = 0.0
+		self.currentReference = 0.0
 		self.theta = 0.0
+		self.bedStatusFile = './../currentBedStatus'
 		try:
 			# turns on fatal error catching	
 			self.ser = serial.Serial('/dev/ttyUSB0', 9600,timeout=1) # set the correct device name and baudrate
@@ -34,134 +35,163 @@ class SerialCom:
 		#def serialOpen(self):
 		#def serialClose(self):
 		
-	def setMode(self,mode):
-		self.mode = mode
-		return 'mode set'
-	
-	def setBedPosition(self,desiredPos):
-		#send angle
+	def sendData(self, dataType, data):
+		print("---------------")
 		self.ser.flushOutput()
-		self.desiredPos = desiredPos;
-		sentString = str(int(10*self.desiredPos))
+		sentString = str(int(10*data))
 		numZeros = 4 - len(sentString)
-		sentString = 't' + switch(numZeros) + sentString;
-		self.ser.write(sentString)
-		time.sleep(1) #pause
+		sentString = dataType + switch(numZeros) + sentString;
+		print("Send to Bed")
+		print(sentString)
+		self.ser.write(sentString)	
+		print("---------------")
+		
+	def receiveData(self):
 		self.ser.flushInput()
 		data = self.ser.readline()
-		dataCtr = 1
-		while data and dataCtr<4:
-			#ser.flushOutput()
-			#n2=dt.datetime.now()
-			#print(data);
-			
-			#print("Length : "+str(len(data))+",")
-			
+		dataCtr = 0
+		cCtr = 0
+		tCtr = 0
+		rCtr = 0
+		print("---------------")
+		print("Read from Bed :")
+		while data and dataCtr<3:			
 			if(len(data)==7):
-				dataCtr = dataCtr+1
+				dataCtr = cCtr + tCtr + rCtr#dataCtr+1
 				#print(data)
-				print(data[0]+":"+data[1:5])
-			
-			# Add timestampt to data and write to dat file
-			#time.sleep(1) 
-			self.ser.flushInput()
+				#print(data[0]+":"+data[1:5])
+				value = int(data[1:5])
+				value = float(value) / 10
+				if("c" in data[0] and cCtr == 0):
+					self.currentPos = value 
+					cCtr = 1
+					print("currentPos : "+str(value))
+				elif("t" in data[0] and tCtr == 0):
+					self.currentTarget = value
+					print("currentTarget : "+str(value))
+					tCtr = 1
+				elif('r' in data[0] and rCtr == 0):
+					self.currentReference =  value
+					print("currentReference : "+str(value))
+					rCtr = 1
+				self.ser.flushInput()
 			data = self.ser.readline()	
-		#read target and store
-		#read current and store
-		#read reference and store		
-		
-#	def setBedReference(self,currentNorthPos):
+		print("---------------")
+
+	def setBedPosition(self,desiredPos):
+		self.desiredPos = desiredPos
 		#send angle
-#		self.ser.flushOutput()
-#		self.currentNorthPos = currentNorthPos;
-#		sentString = str(int(10*self.desiredPos))
-#		numZeros = 4 - len(sentString)
-#		sentString = 't' + switch(numZeros) + sentString;
-#		self.ser.write(sentString)
-#	def getBedReference(self):
+		self.sendData('t',self.desiredPos)
+		#time.sleep(1) #pause		#read target and store
+		#self.receiveData()
+		
+	def setBedReference(self,desiredReference):
+		self.sendData('r',desiredReference)
+		#time.sleep(1)
+		self.currentReference = desiredReference
+
+	def logBedData(self):
+		self.receiveData()
+		f = open(self.bedStatusFile,'w')
+		n1 = dt.datetime.now()
+				
+		currentPos = str(int(10*self.currentPos))
+		numZeros = 4 - len(currentPos)
+		currentPos = switch(numZeros) + currentPos;
+
+		currentTarget = str(int(10*self.currentTarget))
+		numZeros = 4 - len(currentTarget)
+		currentTarget = switch(numZeros) + currentTarget;
+		
+		currentReference = str(int(10*self.currentReference))
+		numZeros = 4 - len(currentReference)
+		currentReference = switch(numZeros) + currentReference;
+		
+		towrite  = str(n1.time()) + " : " +"c:"+currentPos+","+"t:"+ currentTarget +","+"r:"+ currentReference
+		f.write(towrite)
+		print("writeToLogfile :");
+		print(towrite)		
+		f.close()
+		
+	def resetBedFromLog(self):
+		f = open(self.bedStatusFile,'r')
+		#f.write("c:"+str(self.currentPos)+","+"t:"+str(self.currentTarget)+","+"r:"+str(self.currentReference))
+		data = f.read()
+		#print(data)
+		self.setBedPosition(float(data[27:31])/10)
+		self.setBedReference(float(data[34:38])/10)
+		
+		
+		#print("setting position" + (float(data[27:31])/10)+"setting reference" +(float(data[34:38]/10)))
+		f.close()
+
 	def sensorTest(self):
 		print "---initiating serialtest---"
 			
-			#Change path to your local directory if you want
-		f = open('./sensorTest.dat','w');
-		while 1:		
-			#This string initialises the data logging. Presumably you have just reset the arduino before running this python code		
-			sentString = "S"
-			self.ser.flushOutput()
-			self.ser.write(sentString)			
-			n1=dt.datetime.now()
-			time.sleep(1);
-			print "---reading---"
-		
-			self.ser.flushInput()
-			data = self.ser.readline()
-			while data:
-				#ser.flushOutput()
-				n2=dt.datetime.now()
+		#Change path to your local directory if you want
+		f = open('./sensorTest.dat','w')
 				
-				# Add timestampt to data and write to dat file
-				f.write(str((n2-n1).microseconds)+","+data)
-				print str((n2-n1).microseconds)+","+data
-				#time.sleep(1) 
-				self.ser.flushInput()
-				data = self.ser.readline()	
+		#This string initialises the data logging. Presumably you have just reset the arduino before running this python code		
+		sentString = "S"
+		self.ser.flushOutput()
+		self.ser.write(sentString)			
+		n1=dt.datetime.now()
+		time.sleep(1);
+		print "---reading---"
+		self.ser.flushInput()
+		data = self.ser.readline()
+		while data:
+			#ser.flushOutput()
+			n2=dt.datetime.now()
+				
+			# Add timestampt to data and write to dat file
+			f.write(str((n2-n1).microseconds)+","+data)
+			print str((n2-n1).microseconds)+","+data
+			#time.sleep(1) 
+			self.ser.flushInput()
+			data = self.ser.readline()	
 		
 		f.close()
 		
 	def bedRotationTest(self):
 		print("bedReferenceTest")
-		while 1:
-			# write motor ouputs spontaneously (bed rotation test)
-			#ser.write(HEADER) #header byte
-			self.ser.flushOutput()
-			#ser.write(HEADER) #header byte
-			# Padding of zeros in front of the int to make sure there are always 4 digit numbers sent
-			# We multiply theta by 10 to ignore difficulties of sending floats
+		#while 1:
+		# write motor ouputs spontaneously (bed rotation test)
 			
-			sentString = str(int(10*theta))
-			numZeros = 4 - len(sentString)
-			sentString = 't' + switch(numZeros) + sentString;
-
-			self.ser.write(sentString)
-		
-			print "WRITE:"+sentString
-			data="1"
-			theta = theta + 0.1
-			if self.theta > 360.0:
-				self.theta = 0.0
-			x=x+1
-			print "sleep"
-			time.sleep(15)    
+		self.sendData('r',self.theta)	
+		theta = theta + 0.1
+		if self.theta > 360.0:
+			self.theta = 0.0
+		self.x=self.x+1
+		print "sleep"
+		time.sleep(15)    
 	
 	def bedReferenceTest(self):
-		print("bedReferenceTest")
+		#print("bedReferenceTest")
 			
-		while 1:
-			# write rotating motor ouputs spontaneously 
-			# (bed rotation test) and read and store the new north reference
-			#ser.write(HEADER) #header byte
-			self.ser.flushOutput()
-			#ser.write(HEADER) #header byte
-					# Padding of zeros in front of the int to make sure there are always 4 digit numbers sent
-			# We multiply theta by 10 to ignore difficulties of sending floats
-			sentString = str(int(10*self.theta))
-			numZeros = 4 - len(sentString)
-			sentString = 't' + switch(numZeros) + sentString;
-			self.ser.write(sentString)
-			print "WRITE:"+sentString
-			data="1"
-			self.theta = self.theta + 0.1
-			if self.theta > 360.0:
-				self.theta = 340.0
-			if self.theta < 340.0:
-				self.theta = 340				
-			#self.x=self.x+1
-			print "sleep"
-			time.sleep(15)    
+		#while 1:
+		# write rotating motor ouputs spontaneously 
+		# (bed rotation test) and read and store the new north reference
+		#ser.write(HEADER) #header byte
+		self.ser.flushOutput()
+		#ser.write(HEADER) #header byte
+				# Padding of zeros in front of the int to make sure there are always 4 digit numbers sent
+		# We multiply theta by 10 to ignore difficulties of sending floats
+		self.sendData('r',self.theta)
+		
+		self.theta = self.theta + 0.1
+		if self.theta > 360.0:
+			self.theta = 340.0
+		if self.theta < 340.0:
+			self.theta = 340				
+		#self.x=self.x+1
+		print "sleep"
+		time.sleep(15)    
 			
-	def run(self):
+	def run(self,mode):
 		self.x = 0
 		self.theta = 186.5
+		self.mode = mode
 		
 		print "start"
 		if self.mode == 2 :
@@ -173,44 +203,9 @@ class SerialCom:
 			
 		while 1:
 			if self.mode == 2 :
-				self.bedRotationTest
+				self.bedRotationTest()
 			elif self.mode == 3:
-				self.bedReferenceTest
+				self.bedReferenceTest()
 			else :
-				self.sensorTest
+				self.sensorTest()
 
-
-#sc = SerialCom(3)			
-#SerialCom.bedReferenceTest(sc)
-"""
-try:
-	ser = serial.Serial('/dev/ttyUSB0', 9600) # set the correct device name and baudrate
-except:
-	sys.exit(1)
-"""
-"""
-x = 0
-ser = serial.Serial('/dev/ttyUSB1', 9600,timeout=1) # set the correct device name and baudrate	
-
-while 1:
-	#ser.write(HEADER) #header byte
-	
-
-	ser.write(str(x))
-	#ser.write(HEADER) #header byte
-	print "WRITE: "+str(x)
-	data="1"
-	while data:
-		print "-------reading"
-		data = ser.readline()
-		ser.flushInput()
-		#ser.flushOutput()
-		print data
-		print "------------end"
-	
-
-	x=x+1
-	print "sleep"
-	time.sleep(1)
-ser.close()	
-"""
