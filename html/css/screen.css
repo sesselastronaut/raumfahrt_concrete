@@ -3,10 +3,11 @@ html,body{
     margin:0;padding:0;
     /*font-family:LatinModernRoman10Regular,serif;*/
     font-family:"Helvetica Neue",serif;
-    font-size:12px;color:#333;
+    font-size:12px;color:white;
 }
 h1{
-    font-family:LatinModernRomanCaps10Regular,serif;
+    /*font-family:LatinModernRomanCaps10Regular,serif;*/
+    font-family:"Helvetica Neue",serif;
     font-size:2.7em;line-height:100%;
     font-weight:normal;
     margin:0;padding:0;
@@ -19,20 +20,24 @@ h1 .meta{
 
 #graph{
 position:absolute;
-width:1024px;height:758px;background:rgb(243,243,235);
+width:1280px;height:800px;background:rgb(63,10,34);
+/*width:1024px;height:758px;background:rgb(243,243,235);*/
 }
 #overlay{
 position:absolute;
 margin:10px 10px;
-width:1004px;height:738px;
+/*width:1004px;height:738px;*/
+width:1260px;height:780px;
 }
 
 .label{
     position:absolute;
-    font-family:LatinModernRomanDunhill10Rg;
+    font-family:"Helvetica Neue",serif;
+/*    font-family:LatinModernRomanDunhill10Rg;*/
 }
 .caption{
-    font-family:LatinModernRomanDunhill10Rg;
+	font-family:"Helvetica Neue",serif;
+	/*font-family:LatinModernRomanDunhill10Rg;*/
 }
 
 .infobox{
@@ -43,7 +48,7 @@ width:1004px;height:738px;
     background:rgba(243,243,235,.47);
 }
 .infobox.a{
-    right:0;top:90px;
+    right:0;top:0px;
 }
 .infobox.b{
     right:0;bottom:0;
@@ -52,7 +57,8 @@ width:1004px;height:738px;
     margin:2px 10px;
 }
 .infobox .title{
-    font-family:LatinModernRomanCaps10Regular,serif;font-size:1.4em;
+    font-family:"Helvetica Neue",serif;font-size:1.4em;
+    /*font-family:LatinModernRomanCaps10Regular,serif;font-size:1.4em;*/
     border-bottom:1px solid #333;
     margin-bottom:4px;padding-bottom:4px;margin-top:4px;
 }
@@ -71,7 +77,8 @@ width:1004px;height:738px;
     border:1px solid #333;color:#333;
     margin:1px;padding:0;
     background:inherit;
-    font-family:LatinModernRomanCaps10Regular,serif;font-size:1.4em;
+    font-family:"Helvetica Neue",serif;font-size:1.4em;
+/*    font-family:LatinModernRomanCaps10Regular,serif;font-size:1.4em;*/
 }
 .infobox button div{
     display:inline-block;
@@ -83,8 +90,8 @@ width:1004px;height:738px;
 }
 
 #nav{
-    position:absolute;left:10px;top:80px;
-    width:240px;height:640px;
+    position:absolute;left:10px;top:3px;
+    width:240px;height:775px;
     overflow:auto;
 }
 #nav ul{
@@ -94,7 +101,8 @@ width:1004px;height:738px;
     margin:6px 0;
 }
 #nav > ul > li span{
-    font-family:LatinModernRoman10Bold;
+    font-family:"Helvetica Neue",bold;
+    /*font-family:LatinModernRoman10Bold;*/
     text-decoration:underline;
 }
 #nav li.body{

@@ -109,8 +109,8 @@ var initData = function(){
 window.onload = function() {
     stage = new Kinetic.Stage({
         container: "graph",
-        width: 1024,
-        height: 758
+        width: 1280,
+        height: 800
     });
     LightsideLayer = new Kinetic.Layer();
     DarksideLayer = new Kinetic.Layer();
@@ -122,12 +122,12 @@ window.onload = function() {
     //frame
     BGLayer.add(new Kinetic.Rect({
 	strokeWidth:2,
-	stroke:'black',
+	stroke:'white',
 	x:4,y:4,width:stage.getWidth()-8,height:stage.getHeight()-8
     }));
     BGLayer.add(new Kinetic.Rect({
 	strokeWidth:1,
-	stroke:'black',
+	stroke:'white',
 	x:8,y:8,width:stage.getWidth()-16,height:stage.getHeight()-16
     }));
     
