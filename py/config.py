@@ -262,7 +262,7 @@ CELESTIAL_BODY = {
         'pic':'pic-vanguard1.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'erster Solarbetriebener Satellit. <br/>1958 von der US Navy in den Orbit geschossen.<br/>Das &auml;lteste noch im Orbit befindliche Objekt'
     },
     #Cosmos 382 
     "cosmos_382": {
@@ -288,7 +288,7 @@ CELESTIAL_BODY = {
         'pic':'pic-cosmos_1818.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': '1.500Kg schwerer Spionagesatellit. 1987 vom<br/>russischen Baikonur Cosmodromevon in Orbit<br/>geschossen-eine Art fliegendes Tschernobyl<br/>'
     },
     
 #Sterne___Stars_________________________________________________________
