@@ -35,9 +35,14 @@ function SpaceObjHTML(spObj){
 	    $('.infobox .info .pic').empty();
 	    if(spObj.pic != undefined)
 		$('.infobox .info .pic').append('<img src="img/'+spObj.pic+'"/>');
-	    $('.infobox .info .val-dist').empty().append(spObj.dist);
-	    $('.infobox .info .val-rot').empty().append(((-180./Math.PI)*spObj.deltaAz).toFixed(2))+";"+spObj.deltaAz;
-	    $('.infobox .info .val-size').empty().append(spObj.size);
+	    if(spObj.description != undefined)
+		$('.infobox .info .val-desc').empty().append(spObj.description+"<br/>");
+	    if(spObj.dist != undefined)
+		$('.infobox .info .val-dist').empty().append("Distanz: "+spObj.dist+"AU<br/>");
+	    if(spObj.deltaAz != undefined)
+		$('.infobox .info .val-rot').empty().append("Rotation: "+((-180./Math.PI)*spObj.deltaAz).toFixed(2)+"&deg;<br/>");
+	    if(spObj.size != undefined)
+		$('.infobox .info .val-size').empty().append("Sichtbare Gr&ouml;sse: "+spObj.size+"&deg;<br/>");
 	    
 	    $('.infobox .info').show();
 	});
@@ -53,6 +58,7 @@ function SpaceObj(arraydata,radius){
     this.symbol = arraydata['symbol'];
     this.pic = arraydata['pic'];
     this.size = arraydata['size'];
+    this.description = arraydata['description'];
     this.dist = arraydata['dist'];
     this.data = arraydata['data'];
     this.radius = radius;

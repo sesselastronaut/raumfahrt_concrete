@@ -16,6 +16,7 @@ var stage;
 var BGLayer,DarksideLayer,LightsideLayer;
 var ObjectLegendLayer;
 var spaceObjects;
+var choosenObject;
 
 // update data from client
 var setData = function(bodyID){
@@ -66,7 +67,6 @@ var loadData = function(){
 	    window.setTimeout(loadData,30000);
 	}
     });
-    //window.setTimeout(loadData,3000);
 }
 
 // first time loading data
@@ -85,26 +85,44 @@ var initData = function(){
 	},
 	success: function(data){
 	    eval(data);
-	    dbg(cats)
 	    if(arr){
 		// create categories
 		createHTMLCategories(cats);
 		for(var star in arr){
-		    spaceObjects[star] = new SpaceObj(arr[star],stage.getWidth()*.3);
+		    spaceObjects[star] = new SpaceObj(arr[star],stage.getWidth()*.25);
 		    LightsideLayer.add(spaceObjects[star].getGroup('sunny'));
 		    LightsideLayer.add(spaceObjects[star].getGroup('info'));
 		    LightsideLayer.add(spaceObjects[star].getGroup('act'));
 		    DarksideLayer.add(spaceObjects[star].getGroup('shady'));
 		    spaceObjects[star].hideInfo();
 		}
-		window.setTimeout(loadData,300);
+		window.setTimeout(loadData,30000);
+		// load bed target
+		$.ajax({
+		    url: '../py/data.json',
+		    context: document,
+                    dataType: 'json',
+		    statusCode: {
+			404: function() {
+			    showErr('Page Not Found for Data Update');
+			}
+		    },
+		    success: function(data){
+			if(data.goto && $('#'+data.goto.length)){
+			    choosenObject = $('#'+data.goto);
+			    choosenObject.click();$('#go-accept').click();
+			}
+			else{
+			    showErr('Could not interpret data.json');
+			}
+		    }
+		});// end ajax
 	    }
 	    else{
 		showErr('Unknown Error!');
 	    }
 	}
     });
-    //window.setTimeout(loadData,3000);
 }
 window.onload = function() {
     stage = new Kinetic.Stage({
@@ -137,7 +155,7 @@ window.onload = function() {
     line = new Kinetic.Line({strokeWidth:1,stroke:'black',points:[0,-4,0,4]});
     LightsideLayer.add(line);
     
-    var _hemi = new Hemisphere(18,64,stage.getWidth()*.3);
+    var _hemi = new Hemisphere(18,64,stage.getWidth()*.25);
     LightsideLayer.add(_hemi.getNorthpole());
     DarksideLayer.add(_hemi.getSoutpole());
     
@@ -147,10 +165,10 @@ window.onload = function() {
     spaceObjects = {};
     
     DarksideLayer.setRotationDeg(-90);
-    DarksideLayer.move(stage.getWidth()*.55,stage.getHeight()*.53)
+    DarksideLayer.move(stage.getWidth()*.48,stage.getHeight()*.53)
     DarksideLayer.setOpacity(.6);
     LightsideLayer.setRotationDeg(-90);
-    LightsideLayer.move(stage.getWidth()*.55,stage.getHeight()*.53)
+    LightsideLayer.move(stage.getWidth()*.48,stage.getHeight()*.53)
 
     stage.add(DarksideLayer);
     stage.add(LightsideLayer);
@@ -168,6 +186,7 @@ window.onload = function() {
     $('#go-cancel').click(function(){
 	$('.infobox .info').hide();
 	$('#nav li.act').removeClass('act').data('spObj').hideInfo();
+	choosenObject.click();
     });
     
     $('#go-accept').click(function(){

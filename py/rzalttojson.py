@@ -25,8 +25,9 @@ coords = {}
 def dist2au(dist):
     global ly2au
     if dist.find('ly') != -1:
-        return ly2au*float(dist[0:dist.find('ly')])
-    
+        return round(ly2au*float(dist[0:dist.find('ly')]),6)
+    return round(float(dist),6)
+
 def fillArr(obj,meta,id):
     global coords
     if meta['datatype'] == 'nasacsv':# is nasa csv parsed
@@ -46,6 +47,7 @@ def fillArr(obj,meta,id):
             'name':meta['name'],
             'size':float(size),
             'color':meta['color'],
+            'description':meta['description'],
             'data':[]
             }
         if 'symbol' in meta:
@@ -55,14 +57,15 @@ def fillArr(obj,meta,id):
         if(meta['datatype'] == 'nasacsv'):
             coords[id]['dist'] = obj['delta']
         elif(type(obj) == ephem.FixedBody):
-            coords[id]['dist'] = dist2au(meta['distance'])
+            if(meta['distance'] != '-1'):
+                coords[id]['dist'] = dist2au(meta['distance'])
         elif(type(obj) == ephem.EarthSatellite):
-            coords[id]['dist'] = obj.elevation/ephem.meters_per_au
+            coords[id]['dist'] = round(obj.elevation/ephem.meters_per_au,6)
         else:
             if id=='antichton':
-                coords[id]['dist'] = obj.earth_distance*2
+                coords[id]['dist'] = round(obj.earth_distance*2,6)
             else:
-                coords[id]['dist'] = obj.earth_distance
+                coords[id]['dist'] = round(obj.earth_distance,6)
             
     #test if difference to last angle is markable
     diff = 10

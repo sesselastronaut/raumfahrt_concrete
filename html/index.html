@@ -4,14 +4,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta id="viewport" name="viewport" content="width=1280, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link rel="stylesheet" href="font/Latin-Modern-Roman/stylesheet.css" type="text/css" charset="utf-8"/>
+    <!-- <link rel="stylesheet" href="font/Latin-Modern-Roman/stylesheet.css" type="text/css" charset="utf-8"/> -->
     <link rel="stylesheet" href="css/screen.css" type="text/css" charset="utf-8"/>
   </head>
   <body>
     <div id="graph" style=""></div>
     <div id="overlay">
-	<div class="label" style="left:380px;top:10px;">
-      <h1><span class="meta"></span> Geostation&auml;re Raumfahrt <span class="meta"></span></h1></div>
+      <h1><span class="meta"></span> Geostation&auml;re Raumfahrt <span class="meta"></span></h1>
       <div id="nav"><ul></ul></div>
       <div class="infobox a">
 	  <div class="nowrunning">
@@ -22,12 +21,13 @@
       <div class="infobox b">
 	  <div class="info">
 	    <span class="caption">Angezeigter Himmelsk&ouml;rper</span>
-	    <div class="title"><img src="img/Moon_symbol.svg"/>Mond</div>
-	    <div class="pic"><img src="img/pic-moon.png" width="120" height="119" alt="moon"/></div>
+	    <div class="title"></div>
+	    <div class="pic"></div>
 	    <div class="txt">
-	      Distanz: <span class="val-dist">0.00589</span>AU<br/>
-	      Rotation: <span class="val-rot">30</span>&deg;<br/>
-	      Sichtbare Gr&ouml;sse: <span class="val-size">21</span>&deg;<br/>
+	      <div class="val-desc"></div>
+	      <span class="val-dist"></span>
+	      <span class="val-rot"></span>
+	      <span class="val-size"></span>
 	    </div>
 	    <br clear="all">
 	    <div class="actions">
@@ -36,7 +36,7 @@
 	    </div>
 	  </div>
       </div>
-      <div class="label" style="left:380px;top:40px;"> Rotationen der Himmelsk&ouml;rper innerhalb der n&auml;chsten 7 Stunden</div>
+      <center> Rotationen der Himmelsk&ouml;rper innerhalb der n&auml;chsten 7 Stunden</center>
     </div>
     
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -45,17 +45,6 @@
     <script type="text/javascript" src="js/spaceobject.js"></script>
     <script type="text/javascript" src="js/isom.js"></script>
     <script type="text/javascript" src="js/main0.3.js"></script>
-    <script>
-      /*
-      if (document.webkitRequestFullScreen) {
-      document.webkitRequestFullScreen();
-      }
-      else{
-      alert("no fullscreen!");
-      }
-      */
-
-    </script>
     
 </body>
 </html>
