@@ -92,7 +92,7 @@ CELESTIAL_BODY = {
         'pic':'pic-sun.png',
         'datatype': 'pyephem',
         'class': 'ephem.Sun()',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'Die Beobachtung der Sonne und die Bestimmung ihrer Bahnpunkte war eine Voraussetzung für die Erstellung von Kalendern. Hauptreihenstern der im Zentrum des Sonnensystems steht, welches sie durch ihre Gravitation dominiert.'
         },
         
 # Planeten___Planets____________________________________________________
@@ -106,7 +106,7 @@ CELESTIAL_BODY = {
         'pic':'pic-mercury.png',	
         'datatype': 'pyephem',
         'class': 'ephem.Mercury()',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'Der Himmelsk&ouml;rper an dem die spezielle Relativit&auml;tstherie, die Peripheldrehung, erkl&auml;rt werden konnte, was mit Newtons Lehre nicht m&ouml;glich war.'
     },
     "venus": { 
         'active': 1,
@@ -115,9 +115,9 @@ CELESTIAL_BODY = {
         'color': 'green',
         'symbol':'Venus_symbol.svg',
         'pic':'pic-venus.png',
-        'datatype': 'pyephem', #Venus/Hesperus/Stella Maris/Abendstern/Morgenstern
+        'datatype': 'pyephem', 
         'class': 'ephem.Venus()',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'Hesperus, Stella Maris, Abend & Morgenstern der der Navigation diente. Ist nach dem Mond das hellste nat&uuml;rlich Objekt am Sternenhimmel. Galileo hatte entdeckt, dass sich auf der Venus zyklischen Phasen zeigen, analog zu den Mondphasen, was beweist, dass der Planet sich um die Sonne dreht.'
     },
     "mars": {
         'active': 1,
@@ -128,7 +128,7 @@ CELESTIAL_BODY = {
         'pic':'pic-mars.png',
         'datatype': 'pyephem',
         'class': 'ephem.Mars()',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'Planet mit stark elliptischer Bahn, an deren Berechnung Johannes Kepler fast scheitert, jedoch letztenendes die wahre Planetenbewegung entdeckt.'
     },
     "jupiter": {
         'active': 1,
@@ -139,7 +139,7 @@ CELESTIAL_BODY = {
         'pic':'pic-jupiter.png',
         'datatype': 'pyephem',
         'class': 'ephem.Jupiter()',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'Jupiter hat eine wichtige Funktion in unserem Sonnensystem. Da er schwerer ist als alle anderen Planeten zusammen, bildet er eine wesentliche Komponente des Massengleichgewichtes im Sonnensystem. Er stabilisiert durch seine Masse den Asteroideng&uuml;rtel.'
     },
     "saturn": {
         'active': 1,
@@ -150,7 +150,7 @@ CELESTIAL_BODY = {
         'symbol':'Saturn_symbol.svg',
         'datatype': 'pyephem',
         'class': 'ephem.Saturn()',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'Saturn ist der K&uuml;nstler unter den Planeten. Er ist vollkommen sinnlos, sieht aber dank seine Hüftgurtes gut aus. Sein Ring verlangt ihm ewige Treue und Liebe zur Kunst ab, und er ist nie allein, immer umtost von Gesteinsbrocken. '
     },
     "uranus": {
         'active': 1,
@@ -161,7 +161,7 @@ CELESTIAL_BODY = {
         'pic':'pic-uranus.png',
         'datatype': 'pyephem',
         'class': 'ephem.Uranus()',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'Der einzige Planet im Sonnensystem, der nicht direkt nach einer r&ouml;mischen Gottheit benannt wurde'
     },
     "neptune": {
         'active': 1,
@@ -172,7 +172,7 @@ CELESTIAL_BODY = {
         'pic':'pic-neptune.png',
         'datatype': 'pyephem',
         'class': 'ephem.Neptune()',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'Verfügt über ein Ringsystem welche u.a. Egalité, Fraternité, Liberté und LeVerrier-Ring benannt sind.'
     },
     
 #Erdtrabanten__Earth-satellites_________________________________________
@@ -185,7 +185,7 @@ CELESTIAL_BODY = {
         'pic':'pic-moon.png',
         'datatype': 'pyephem',
         'class': 'ephem.Moon()',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': '&uuml;berlegt es sich jeden Tag anderst wie er aussehen soll, eine echter Fashionvictim.'
     },    
     "iss": {
         'active': 1,
@@ -197,7 +197,7 @@ CELESTIAL_BODY = {
         'pic':'pic-iss.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'befindet sich seit 1998 in Bau und ist zurzeit das größte k&uuml;nstliche Objekt im Erdorbit.'
         # or http://www.celestrak.com/NORAD/elements/amateur.txt
     },
     
@@ -211,7 +211,7 @@ CELESTIAL_BODY = {
         'pic':'pic-voyager1.png',
         'datatype': 'nasacsv',
         'sourcefile': 'data/nasacsv/voyager_1.csv',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'Tapfer reist Voyager 1 immer weiter in unbekannte Gefilde, wo noch nie etwas Menschliches oder etwas Mensch gemachtes vorher war.'
     },
     "voyager2": {
         'active': 1,
@@ -222,7 +222,7 @@ CELESTIAL_BODY = {
         'pic':'pic-voyager2.png',
         'datatype': 'nasacsv',
         'sourcefile': 'data/nasacsv/voyager_2.csv',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'das am zweit-weitesten (nach ihrer Schwestersonde Voyager 1) von der Erde entfernte von Menschen gebaute Objekt'
     },
     "hubble": {
         'active': 1,
@@ -234,13 +234,13 @@ CELESTIAL_BODY = {
         'pic':'pic-hubble.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt', 
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'Weltraumteleskop welches anfangs unscharf sah, was aber durch versch. Servicemission behoben werden konnte und nun Sterne und Galaxien beobachtet.'
     },
     
 #Weltraumschrott__Space_Debris__________________________________________
     #Envisat
     "envisat": {
-        'active': 1,
+        'active': 0,
         'name': 'Envisat',
         'parsekey': 'ENVISAT',
         'category': 'spacedebris',
@@ -262,7 +262,7 @@ CELESTIAL_BODY = {
         'pic':'pic-vanguard1.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt',
-        'description': 'erster Solarbetriebener Satellit. <br/>1958 von der US Navy in den Orbit geschossen.<br/>Das &auml;lteste noch im Orbit befindliche Objekt'
+        'description': 'erster Solarbetriebener Satellit. 1958 von der US Navy in den Orbit geschossen. Das &auml;lteste noch im Orbit befindliche Objekt.'
     },
     #Cosmos 382 
     "cosmos_382": {
@@ -288,7 +288,7 @@ CELESTIAL_BODY = {
         'pic':'pic-cosmos_1818.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt',
-        'description': '1.500Kg schwerer Spionagesatellit. 1987 vom<br/>russischen Baikonur Cosmodromevon in Orbit<br/>geschossen-eine Art fliegendes Tschernobyl<br/>'
+        'description': 'Spionagesatellit 1987 vom russischen Baikonur Cosmodromevon in Orbit geschossen - eine Art fliegendes Tschernobyl.'
     },
     
 #Sterne___Stars_________________________________________________________
@@ -302,7 +302,7 @@ CELESTIAL_BODY = {
         'distance': '65ly',
         'datatype': 'pyephem',
         'class': 'ephem.star("Aldebaran")',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'ist Teil des Wintersechsecks und liegt im offenen Sternhaufen Hyaden, zu denen er allerdings nicht als physikalisches Mitglied z&auml;hlt. Wenn die Sonde Pioneer 10 ihren aktuellen Kurs beibeh&auml;lt, wird sie in etwa 2 Millionen Jahren im Sonnensystem von Aldebaran eintreffen.'
     },
     "antares": {
         'active': 1,
@@ -314,7 +314,7 @@ CELESTIAL_BODY = {
         'distance': '600ly',  
         'datatype': 'pyephem',
         'class': 'ephem.star("Antares")',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'Gegenmars oder auch Gegenares ist ein Mitglied des Gouldschen Gürtels und ist der hellste Stern im Sternenbild Skorpion.'
     },
     "sirius": {
         'active': 1,
@@ -326,7 +326,7 @@ CELESTIAL_BODY = {
         'distance': '8.60ly', # +- 0,04 
         'datatype': 'pyephem',
         'class': 'ephem.star("Sirius")',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'mit einer scheinbaren Helligkeit von −1,46 mag der hellste Stern am Nachthimmel. Wird auch als Hundsstern bezeichnet. Die R&ouml;mer nannten die heißeste Zeit des Jahres die „Hundstage“ (lat. dies caniculares, Tage des Hundssterns).'
     },
     "polaris": {
         'active': 1,
@@ -338,7 +338,7 @@ CELESTIAL_BODY = {
         'distance': '431ly', # +- 27
         'datatype': 'pyephem',
         'class': 'ephem.star("Polaris")',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'Aus Anlass des 50-jährigen Bestehens der NASA wurde am 4. Februar 2008 der Beatles-Song „Across the Universe“ als MP3 codiert in Richtung des Polarsterns ausgestrahlt. Etwa im Jahr 2440 wird „Across the Universe“ die Polarsternregion erreichen.'
     },
     "vega": {
         'active': 1,
@@ -350,7 +350,7 @@ CELESTIAL_BODY = {
         'distance': '25.00ly', # +- 0,1
         'datatype': 'pyephem',
         'class': 'ephem.star("Vega")',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'Wega bildet zusammen mit den Hauptsternen der Sternbilder Schwan und Adler das sogenannte Sommerdreieck. Sie ist der f&uuml;nfthellste Stern am Nachthimmel'
     },
     
     
@@ -366,7 +366,7 @@ CELESTIAL_BODY = {
         'distance': '-1',
         'datatype': 'pyephem', 
         'class': 'ephem.star("Schedar")',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'bildet ein markantes W am Nachthimmel. Wird auch als Himmels-W. bezeichnet. Mit Einzelsternenamen wie: Shedir, Caph, Ruchbah, Segin, Achird'
     },
 	#Southerncross -> using star Mimosa which is part of constellation
 	"southerncross": {
@@ -379,7 +379,7 @@ CELESTIAL_BODY = {
         'distance': '-1',
         'datatype': 'pyephem', 
         'class': 'ephem.star("Mimosa")',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'Das Kreuz des S&uuml;dens ist nur von der südlichen Hemisphere zu sehen. Es ist das kleinste, aber ein sehr auff&auml;lliges und bekanntes Sternbild. Die vier hellsten Sterne bilden ein markantes Kreuz am Himmel. Es liegt inmitten des hellen Bandes der Milchstraße '
     },
 	#Big Bear or Das Reiterlein im grossen Wagen -> using star Megrez 
 	"big_bear": {
@@ -392,7 +392,7 @@ CELESTIAL_BODY = {
         'distance': '-1', 
         'datatype': 'pyephem', 
         'class': 'ephem.star("Megrez")',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'Kaiser Augustus soll nach Aussage seines antiken Biographen Sueton an Brust und Bauch zahlreiche Muttermale gehabt haben, die sich als Abbild dieser Sternkonfiguration deuten ließen.'
     },
     #Orion -> using Betelgeuse
     "orion": {
@@ -405,7 +405,7 @@ CELESTIAL_BODY = {
         'distance': '-1',
         'datatype': 'pyephem', 
         'class': 'ephem.star("Betelgeuse")',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'Aufgrund seiner Vielzahl heller Sterne und ihrer einprägsamen Anordnung ist der Orion das auffallendste Sternbild des Winterhimmels. Das Sternbild soll einen mythischen Himmelsj&auml;ger darstellen.'
     },
 
 #Asteroiden___Asteroids_________________________________________________
@@ -418,7 +418,7 @@ CELESTIAL_BODY = {
         'pic':'pic-243_ida.png',
         'datatype': 'nasacsv',
         'sourcefile': 'data/nasacsv/243_Ida.csv',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'it was discovered by the Galileo shuttle, it is just a banana shaped piece of rock... but it has its own moon!'
     },
     "2010_TK7": {
         'active': 1,
@@ -429,7 +429,7 @@ CELESTIAL_BODY = {
         'pic':'pic-2010_TK7.png',
         'datatype':  'nasacsv',
         'sourcefile': 'data/nasacsv/2010_TK7.csv',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'der erste Erd-Trojaner, auf eine Art unser zweiter "Mond", und somit der zweitn&auml;chste  Himmelsk&ouml;rper, der uns aber nie gef&auml;hrlich werden wird, da er im L4 festsitzt.'
     },
 #Kometen___comets_______________________________________________________
 	#Georges Perec
@@ -444,7 +444,7 @@ CELESTIAL_BODY = {
         'pic':'pic-halley.png',
         'datatype': 'nasacsv',
         'sourcefile': 'data/nasacsv/halley.csv',
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'ein periodischer Komet, der alle 75 bis 77 Jahre der Erde so nahe kommt, dass er gut mit freiem Auge beobachtet werden kann.'
     },
 	#ISON C/2012 S1 
     "ISON": {
@@ -456,7 +456,7 @@ CELESTIAL_BODY = {
         'pic':'pic-ISON_C-2012.png',
         'datatype': 'nasacsv',
         'sourcefile': 'data/nasacsv/ISON.csv', 
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'ist ein Komet, der wahrscheinlich aus der Oortschen Wolke stammt und am 28. November 2013 der Sonne sehr nahe kommen wird. Aufgrund der dichten Ann&auml;herung an die Sonne geh&ouml;rt er damit zu den sogenannten Sonnenstreifern.'
 	},
 #Galaxien___Galaxies____________________________________________________
     #M 31 aka Andromeda Galaxy aka C/2002 Y1 (Juels-Holvorcem)
@@ -471,7 +471,7 @@ CELESTIAL_BODY = {
         'distance': '8.60ly', ##checkern     
         'datatype': 'pyephem',
         'class': 'ephem.readdb("M31,f|G,0:42:44,+41:16:8,4.16,2000,11433|3700|35")', 
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'ist das am weitesten von der Erde entfernte, mit bloßem Auge sichtbare extragalaktische Objekt.'
     },
 #Gegenerde___Globus_Cassus______________________________________________
 	#Antichthon
@@ -484,7 +484,7 @@ CELESTIAL_BODY = {
         'pic':'pic-antichthon.png', 
         'datatype': 'pyephem', # Same direction as the Sun
         'class': 'ephem.Sun()', 
-        'description': 'Sample Description &auml;&ouml;&uuml; asd<br/>nl<br/>adlkj asd'
+        'description': 'Mythen die sich um den Himmelsk&ouml;rper scharen und diese n&auml;chstes Jahr platzen. Dann soll der Augenschein einer Raumsonde uns die Gewissheit liefern können, das die Gegenerde nich existiert, bis dahin verbleibt ihre Existenz jedoch spekulativ.'
         },
 }
 
