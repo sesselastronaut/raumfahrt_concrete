@@ -24,7 +24,9 @@ stands for
 */
 
 
-const int analogInPin = A0;
+const int analogIn1Pin = A0;
+const int analogIn2Pin = A1;
+ 
 const int analogOutPin = 9;
 const int resetNorthPin = 5;
 
@@ -276,6 +278,120 @@ void ground_control(float theta_current)
 }
 
 
+float adc1;
+float adc2;
+
+float v1;
+float v2;
+
+float theta1;
+float theta2;
+
+float t;
+float theta1p1;
+float theta1p2;
+
+float thetaOut;
+const float oneByM1 = 36;
+const float oneByM2 = -36;
+
+float computeBedAngle()
+{
+  
+  
+  static float adc1Past = 0.0;
+  static float adc2Past = 0.0;
+
+    adc1 = 0.6* (float)analogRead(analogIn1Pin) + 0.4*adc1Past; 
+    adc2 = 0.6* (float)analogRead(analogIn2Pin) + 0.4*adc2Past; 
+    
+    adc1Past = adc1;
+    adc2Past = adc2;
+    
+    
+    v1 = 5*(adc1/1023.0);
+    v2 = 5*(adc2/1023.0);
+    
+     if(serialPrintMode == 1) {
+       
+      Serial.print(" | V1 : ");
+      Serial.print(v1);
+
+      Serial.print(" | V2 : ");
+      Serial.print(v2);
+     }
+    
+/*
+    if(v1<=2.5 && v2 <=2.5)
+    {
+      // Quadrant 1
+      Serial.print(" | Quad : 1");
+    //    theta1 = oneByM1*v1;
+     //   theta2 = oneByM2*(v2 - 2.5);        
+
+    }
+    else if (v1>2.5 && v2<=2.5)
+    {
+      // Quadrant 2
+       Serial.print(" | Quad : 2");
+    //    theta1 = 90.0 + oneByM1*(v1-2.5);
+     //   theta2 = 90.0 + oneByM1*v2;
+    }
+    else if (v1>2.5 && v2>2.5)
+    {
+       // Quadrant 3
+      Serial.print(" | Quad : 3");
+     //   theta1 =180.0 + oneByM2*(v1 - 5.0);
+      //  theta2 =180.0 + oneByM1*(v2 - 2.5);
+    }
+    else if (v1<=2.5 && v2>2.5)
+    {
+       // Quadrant 4
+      Serial.print(" | Quad : 4");
+      //  theta1 = 270 + oneByM2*(v1 - 2.5);
+      //  theta2 = 270 + oneByM2*(v2 - 5.0);
+    }
+    */
+    
+      
+    theta1p1 = (v1/5.0) * 180.0;
+    theta1p2 = 180.0 + ((5.0-v1)/5.0)*180.0;
+  
+   if(serialPrintMode == 1) {
+      Serial.print(" | theta1p1 :");
+      Serial.print(theta1p1);
+      Serial.print(" | theta1p2 :");
+      Serial.print(theta1p2);
+
+      Serial.print(" | Choice : ");
+   }
+    if(v2 < 2.54)
+    {
+       if(serialPrintMode == 1) {
+        Serial.print("1 : ");
+        Serial.println(theta1p1);
+       }
+        
+        thetaOut = theta1p1;
+    }
+    else
+    {
+       if(serialPrintMode == 1) {
+        Serial.print("2 : ");
+        Serial.println(theta1p2);
+       }
+        thetaOut = theta1p2;
+    }  
+
+/*
+    Serial.print(" | diff:");
+    Serial.print(theta1-theta2);;
+    Serial.print(" | avg:");
+    Serial.println(thetaAvg);
+  */  
+    return(thetaOut);
+    
+}
  
 void loop(){
   
@@ -284,15 +400,11 @@ void loop(){
 // btween 0 to 1023
   
   adc_previous = adc_current; 
-  adc_current = analogRead(analogInPin); 
+  adc_current = computeBedAngle();
   
     
 //calculate the current position in angle degrees
     
-  
-  theta_m1 = (float)(adc_current * (355.0/1024.0));
-  theta_m2 = (float)(adc_current * (5.0/1024.0)); 
-
 /*
   if(adc_previous - adc_current >10 || adc_current - adc_previous > 10)
   {
@@ -314,7 +426,7 @@ void loop(){
       for( int i = 0; i<10; i++) {
         theta_current = theta_current + sensor_window[i];
       }
-      theta_current = (0.3519) * (theta_current/10);
+      theta_current =  (theta_current/10);
            
       resetNorthVal = digitalRead(resetNorthPin);
       if(resetNorthVal == 0)
