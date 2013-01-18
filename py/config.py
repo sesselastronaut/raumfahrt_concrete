@@ -92,7 +92,7 @@ CELESTIAL_BODY = {
         'pic':'pic-sun.png',
         'datatype': 'pyephem',
         'class': 'ephem.Sun()',
-        'description': 'Die Beobachtung der Sonne und die Bestimmung ihrer Bahnpunkte war eine Voraussetzung für die Erstellung von Kalendern. Hauptreihenstern der im Zentrum des Sonnensystems steht, welches sie durch ihre Gravitation dominiert.'
+        'description': 'Die Beobachtung der Sonne und die Bestimmung ihrer Bahnpunkte war eine Voraussetzung f&auml;r die Erstellung von Kalendern. Hauptreihenstern der im Zentrum des Sonnensystems steht, welches sie durch ihre Gravitation dominiert.'
         },
         
 # Planeten___Planets____________________________________________________
@@ -150,7 +150,7 @@ CELESTIAL_BODY = {
         'symbol':'Saturn_symbol.svg',
         'datatype': 'pyephem',
         'class': 'ephem.Saturn()',
-        'description': 'Saturn ist der K&uuml;nstler unter den Planeten. Er ist vollkommen sinnlos, sieht aber dank seine Hüftgurtes gut aus. Sein Ring verlangt ihm ewige Treue und Liebe zur Kunst ab, und er ist nie allein, immer umtost von Gesteinsbrocken. '
+        'description': 'Saturn ist der K&uuml;nstler unter den Planeten. Er ist vollkommen sinnlos, sieht aber dank seine H&uml;ftgurtes gut aus. Sein Ring verlangt ihm ewige Treue und Liebe zur Kunst ab, und er ist nie allein, immer umtost von Gesteinsbrocken. '
     },
     "uranus": {
         'active': 1,
@@ -172,7 +172,7 @@ CELESTIAL_BODY = {
         'pic':'pic-neptune.png',
         'datatype': 'pyephem',
         'class': 'ephem.Neptune()',
-        'description': 'Verfügt über ein Ringsystem welche u.a. Egalité, Fraternité, Liberté und LeVerrier-Ring benannt sind.'
+        'description': 'Verf&uuml;gt &uuml;ber ein Ringsystem welche u.a. Egali&eacute;, Fraternit&eacute;, Libert&eacute; und LeVerrier-Ring benannt sind.'
     },
     
 #Erdtrabanten__Earth-satellites_________________________________________
@@ -197,7 +197,7 @@ CELESTIAL_BODY = {
         'pic':'pic-iss.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt',
-        'description': 'befindet sich seit 1998 in Bau und ist zurzeit das größte k&uuml;nstliche Objekt im Erdorbit.'
+        'description': 'befindet sich seit 1998 in Bau und ist zurzeit das gr&ouml;te k&uuml;nstliche Objekt im Erdorbit.'
         # or http://www.celestrak.com/NORAD/elements/amateur.txt
     },
     
@@ -314,7 +314,7 @@ CELESTIAL_BODY = {
         'distance': '600ly',  
         'datatype': 'pyephem',
         'class': 'ephem.star("Antares")',
-        'description': 'Gegenmars oder auch Gegenares ist ein Mitglied des Gouldschen Gürtels und ist der hellste Stern im Sternenbild Skorpion.'
+        'description': 'Gegenmars oder auch Gegenares ist ein Mitglied des Gouldschen G&uuml;rtels und ist der hellste Stern im Sternenbild Skorpion.'
     },
     "sirius": {
         'active': 1,
@@ -326,7 +326,7 @@ CELESTIAL_BODY = {
         'distance': '8.60ly', # +- 0,04 
         'datatype': 'pyephem',
         'class': 'ephem.star("Sirius")',
-        'description': 'mit einer scheinbaren Helligkeit von −1,46 mag der hellste Stern am Nachthimmel. Wird auch als Hundsstern bezeichnet. Die R&ouml;mer nannten die heißeste Zeit des Jahres die „Hundstage“ (lat. dies caniculares, Tage des Hundssterns).'
+        'description': 'mit einer scheinbaren Helligkeit von --1,46 mag der hellste Stern am Nachthimmel. Wird auch als Hundsstern bezeichnet. Die R&ouml;mer nannten die heisseste Zeit des Jahres die Hundstage (lat. dies caniculares, Tage des Hundssterns).'
     },
     "polaris": {
         'active': 1,
@@ -338,7 +338,7 @@ CELESTIAL_BODY = {
         'distance': '431ly', # +- 27
         'datatype': 'pyephem',
         'class': 'ephem.star("Polaris")',
-        'description': 'Aus Anlass des 50-jährigen Bestehens der NASA wurde am 4. Februar 2008 der Beatles-Song „Across the Universe“ als MP3 codiert in Richtung des Polarsterns ausgestrahlt. Etwa im Jahr 2440 wird „Across the Universe“ die Polarsternregion erreichen.'
+        'description': 'Aus Anlass des 50-j&auml;hrigen Bestehens der NASA wurde am 4. Februar 2008 der Beatles-Song<Across the Universe> als MP3 codiert in Richtung des Polarsterns ausgestrahlt. Etwa im Jahr 2440 wird <Across the Universe> die Polarsternregion erreichen.'
     },
     "vega": {
         'active': 1,
@@ -379,7 +379,7 @@ CELESTIAL_BODY = {
         'distance': '-1',
         'datatype': 'pyephem', 
         'class': 'ephem.star("Mimosa")',
-        'description': 'Das Kreuz des S&uuml;dens ist nur von der südlichen Hemisphere zu sehen. Es ist das kleinste, aber ein sehr auff&auml;lliges und bekanntes Sternbild. Die vier hellsten Sterne bilden ein markantes Kreuz am Himmel. Es liegt inmitten des hellen Bandes der Milchstraße '
+        'description': 'Das Kreuz des S&uuml;dens ist nur von der s&uuml;dlichen Hemisphere zu sehen. Es ist das kleinste, aber ein sehr auff&auml;lliges und bekanntes Sternbild. Die vier hellsten Sterne bilden ein markantes Kreuz am Himmel. Es liegt inmitten des hellen Bandes der Milchstrasse.'
     },
 	#Big Bear or Das Reiterlein im grossen Wagen -> using star Megrez 
 	"big_bear": {
@@ -392,7 +392,7 @@ CELESTIAL_BODY = {
         'distance': '-1', 
         'datatype': 'pyephem', 
         'class': 'ephem.star("Megrez")',
-        'description': 'Kaiser Augustus soll nach Aussage seines antiken Biographen Sueton an Brust und Bauch zahlreiche Muttermale gehabt haben, die sich als Abbild dieser Sternkonfiguration deuten ließen.'
+        'description': 'Kaiser Augustus soll nach Aussage seines antiken Biographen Sueton an Brust und Bauch zahlreiche Muttermale gehabt haben, die sich als Abbild dieser Sternkonfiguration deuten liessen.'
     },
     #Orion -> using Betelgeuse
     "orion": {
@@ -405,7 +405,7 @@ CELESTIAL_BODY = {
         'distance': '-1',
         'datatype': 'pyephem', 
         'class': 'ephem.star("Betelgeuse")',
-        'description': 'Aufgrund seiner Vielzahl heller Sterne und ihrer einprägsamen Anordnung ist der Orion das auffallendste Sternbild des Winterhimmels. Das Sternbild soll einen mythischen Himmelsj&auml;ger darstellen.'
+        'description': 'Aufgrund seiner Vielzahl heller Sterne und ihrer einpr&auml;gsamen Anordnung ist der Orion das auffallendste Sternbild des Winterhimmels. Das Sternbild soll einen mythischen Himmelsj&auml;ger darstellen.'
     },
 
 #Asteroiden___Asteroids_________________________________________________
@@ -429,7 +429,7 @@ CELESTIAL_BODY = {
         'pic':'pic-2010_TK7.png',
         'datatype':  'nasacsv',
         'sourcefile': 'data/nasacsv/2010_TK7.csv',
-        'description': 'der erste Erd-Trojaner, auf eine Art unser zweiter "Mond", und somit der zweitn&auml;chste  Himmelsk&ouml;rper, der uns aber nie gef&auml;hrlich werden wird, da er im L4 festsitzt.'
+        'description': 'der erste Erd-Trojaner, auf eine Art unser zweiter Mond, und somit der zweitn&auml;chste  Himmelsk&ouml;rper, der uns aber nie gef&auml;hrlich werden wird, da er im L4 festsitzt.'
     },
 #Kometen___comets_______________________________________________________
 	#Georges Perec
@@ -471,7 +471,7 @@ CELESTIAL_BODY = {
         'distance': '8.60ly', ##checkern     
         'datatype': 'pyephem',
         'class': 'ephem.readdb("M31,f|G,0:42:44,+41:16:8,4.16,2000,11433|3700|35")', 
-        'description': 'ist das am weitesten von der Erde entfernte, mit bloßem Auge sichtbare extragalaktische Objekt.'
+        'description': 'ist das am weitesten von der Erde entfernte, mit blossem Auge sichtbare extragalaktische Objekt.'
     },
 #Gegenerde___Globus_Cassus______________________________________________
 	#Antichthon
@@ -484,7 +484,7 @@ CELESTIAL_BODY = {
         'pic':'pic-antichthon.png', 
         'datatype': 'pyephem', # Same direction as the Sun
         'class': 'ephem.Sun()', 
-        'description': 'Mythen die sich um den Himmelsk&ouml;rper scharen und diese n&auml;chstes Jahr platzen. Dann soll der Augenschein einer Raumsonde uns die Gewissheit liefern können, das die Gegenerde nich existiert, bis dahin verbleibt ihre Existenz jedoch spekulativ.'
+        'description': 'Mythen die sich um den Himmelsk&ouml;rper scharen und diese n&auml;chstes Jahr platzen. Dann soll der Augenschein einer Raumsonde uns die Gewissheit liefern k&ouml;nnen, das die Gegenerde nich existiert, bis dahin verbleibt ihre Existenz jedoch spekulativ.'
         },
 }
 
