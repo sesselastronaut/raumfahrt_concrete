@@ -22,10 +22,10 @@ def celestial_body_func():
 	logging.basicConfig(format=FORMAT,level=logging.DEBUG,datefmt='%Y-%m-%d %H:%M:%S')
 
 	#Object creation
-	'''
+	
 	sc = SerialCom()
 	sc.resetBedFromLog()
-	'''
+	
 
 	while 1:
 		logging.debug("-----------------------------")
@@ -68,14 +68,11 @@ def celestial_body_func():
 			continue
 	# send to serial port
 
-		self.ser = serial.Serial('/dev/ttyUSB'+str(self.portName), 9600,timeout=1)
-		print("a" + 4.5523)
-		
 		#print("PositionText:"+str(int(float(position)*10)))
 		positionTruncInt = int(10*float(position))
 		positionTruncFloat = float(positionTruncInt)/10
 		print(positionTruncFloat)
-		'''
+		
 		
 		sc.setBedPosition(positionTruncFloat)
 		logging.debug("Sending to serial:")
@@ -84,6 +81,6 @@ def celestial_body_func():
 		time.sleep(1)
 		sc.receiveData()
 		sc.logBedData()
-		'''
+		
 		
 		#sc.receiveData()
