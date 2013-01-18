@@ -9,7 +9,7 @@ if __name__ == "__main__" :
 	print("metascript trying to set a bed position")
 		
 	#SerialCom.bedReferenceTest(sc)
-	#SerialCom.setBedPosition(sc,116.6)
+	SerialCom.setBedPosition(sc,116.6)
 	
 	theta = 116.6
 	ctr = 0
@@ -20,20 +20,24 @@ if __name__ == "__main__" :
 		elif(theta == 156.6):
 			theta = 116.6
 		
+	#	while(theta!= sc.checkTarget()):
 		sc.setBedPosition(theta)
 		
 		while(ctr<10):
+			
+			#sc.setBedReference(223.4)
+			sc.setBedPosition(theta)
+			time.sleep(1)
 			sc.logBedData()
-			time.sleep(3)
 			#sc.resetBedFromLog()
 			time.sleep(2)
 			ctr = ctr+1
 			print("------------------")
 		
 		ctr = 0	
-		sc.resetBedFromLog()
-	
-		time.sleep(10);
+	#	sc.resetBedFromLog()
+		
+	#	time.sleep(5);
 		
 	
 	#	sc.resetBedFromLog()

@@ -150,8 +150,11 @@ void serialInterrupt()
   if (Serial.available() > 0) {
     // get incoming byte:
      Serial.readBytes(inputString,5);
-     Serial.print("Received :");
-     Serial.print(inputString);
+     
+      if(serialPrintMode == 1) {
+       Serial.print("Received :");
+       Serial.print(inputString);
+      }
      int i = 1;
     for (i==1;i<6;i++)
     {
@@ -174,16 +177,15 @@ void serialInterrupt()
       default: break;
     }
     
-    
-    //HardHack
+    /*
     if(theta_desired - northReferenceAngle >= sensor_deadZoneMin  && theta_desired - northReferenceAngle <= sensor_deadZoneMax) {
       if(theta_desired - northReferenceAngle > sensor_deadZoneMid){
         theta_desired = sensor_deadZoneMax + northReferenceAngle;
       }
-      else{
-        theta_desired = sensor_deadZoneMin + northReferenceAngle; 
-      }
-    }
+      else{*/
+     //   theta_desired = theta_desired + northReferenceAngle; 
+ //     }
+  //  }
 
  }   
   // Job done.
@@ -195,29 +197,19 @@ void serialInterrupt()
 void ground_control(float theta_current)
 {
 
-   if(firstTime  == true)
-    {
-      theta_desired = theta_current;
-      //buf[0] = theta_desired;
-      if(serialPrintMode == 1) {
-        Serial.println("reset");
-      }
-      attachInterrupt(0, serialInterrupt, CHANGE);
-      firstTime = false;
-      inService = false;
-    }
-    else if (activeControlOn == true){
+
+//    if (activeControlOn == true){
       if(theta_desired > 360){
         
 //protecting for sensible values
         
         theta_desired = 360; 
       }
-      else if (theta_desired < 0){
+        else if (theta_desired < 0){
             theta_desired = 0;
       }
-      activeControlOn = false;
-    }
+  //    activeControlOn = false;
+   // }
     /*else {
       theta_desired = theta_current;
     }*/
@@ -250,15 +242,17 @@ void ground_control(float theta_current)
  //   Serial.print(buf[0]);   
     if(serialPrintMode == 1) {
       Serial.print("Adc=");
-      Serial.print(adc_current);
+      Serial.print(adc_current);/*
       Serial.print(" | theta_m1=");
       Serial.print(theta_m1);
       Serial.print(" | theta_m2=");        
-      Serial.print(theta_m2);
+      Serial.print(theta_m2);*/
       Serial.print(" | theta_desired = ");
       Serial.print(theta_desired);
       Serial.print(" | theta_current = ");      
       Serial.print(theta_current);
+      Serial.print(" | north_current = ");      
+      Serial.print(northReferenceAngle);
       Serial.print(" | error = ");
       Serial.print(error);
       Serial.print(" | error_previous = ");
@@ -311,15 +305,16 @@ float computeBedAngle()
     
     v1 = 5*(adc1/1023.0);
     v2 = 5*(adc2/1023.0);
-    
+    /*
      if(serialPrintMode == 1) {
+       
        
       Serial.print(" | V1 : ");
       Serial.print(v1);
 
       Serial.print(" | V2 : ");
       Serial.print(v2);
-     }
+     }*/
     
 /*
     if(v1<=2.5 && v2 <=2.5)
@@ -356,7 +351,7 @@ float computeBedAngle()
       
     theta1p1 = (v1/5.0) * 180.0;
     theta1p2 = 180.0 + ((5.0-v1)/5.0)*180.0;
-  
+  /*
    if(serialPrintMode == 1) {
       Serial.print(" | theta1p1 :");
       Serial.print(theta1p1);
@@ -364,22 +359,24 @@ float computeBedAngle()
       Serial.print(theta1p2);
 
       Serial.print(" | Choice : ");
-   }
+   }*/
     if(v2 < 2.54)
     {
+      /*
        if(serialPrintMode == 1) {
         Serial.print("1 : ");
         Serial.println(theta1p1);
-       }
+       }*/
         
         thetaOut = theta1p1;
     }
     else
     {
+      /*
        if(serialPrintMode == 1) {
         Serial.print("2 : ");
         Serial.println(theta1p2);
-       }
+       }*/
         thetaOut = theta1p2;
     }  
 
@@ -394,6 +391,21 @@ float computeBedAngle()
 }
  
 void loop(){
+  
+     if(firstTime  == true)
+    {
+      //theta_desired = theta_current;
+      //buf[0] = theta_desired;
+      analogWrite(analogOutPin, 2.5*51);
+      if(serialPrintMode == 1) {
+        Serial.println("reset");
+      }
+      attachInterrupt(0, serialInterrupt, CHANGE);
+      firstTime = false;
+      inService = false;
+      delay(2);
+    }
+   
   
 // see what value is coming in
 
