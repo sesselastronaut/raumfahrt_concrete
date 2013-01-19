@@ -128,7 +128,7 @@ CELESTIAL_BODY = {
         'pic':'pic-mars.png',
         'datatype': 'pyephem',
         'class': 'ephem.Mars()',
-        'description': 'Der Kriegsbringer, seine stark elliptische Bahn lies J.Kepler fast verzweifeln, bevor er die aktuelle Planetenbewegung entdeckte.'
+        'description': 'Der Kriegsbringer, seine stark elliptische Bahn lies J.Kepler fast verzweifeln, vor er die aktuelle Plane- tenbewegung entdeckte.'
     },
     "jupiter": {
         'active': 1,
@@ -139,7 +139,7 @@ CELESTIAL_BODY = {
         'pic':'pic-jupiter.png',
         'datatype': 'pyephem',
         'class': 'ephem.Jupiter()',
-        'description': 'Der Bringer der Ausgelassenheit ist schwerer als alle anderen Planeten zusammen &amp;  stabilisiert dadurch den Asteroideng&uuml;rtel.'
+        'description': 'Der Bringer der Ausgela- ssenheit stabilisiert durch seine Masse (schwerer als anderen Planeten) den Asteroideng&uuml;rtel.'
     },
     "saturn": {
         'active': 1,
@@ -150,7 +150,7 @@ CELESTIAL_BODY = {
         'symbol':'Saturn_symbol.svg',
         'datatype': 'pyephem',
         'class': 'ephem.Saturn()',
-        'description': 'Der Bringer der alten Zeit, Sein H&uuml;ftgurt verlangt ihm ewige Treue und Liebe zur Kunst ab, er ist nie allein, immer umtost von Gesteinsbrocken. '
+        'description': 'Der Bringer der alten Zeit, sein H&uuml;ftgurt verlangt ihm ewige Treue und Liebe zur Kunst ab.'
     },
     "uranus": {
         'active': 1,
@@ -185,7 +185,7 @@ CELESTIAL_BODY = {
         'pic':'pic-moon.png',
         'datatype': 'pyephem',
         'class': 'ephem.Moon()',
-        'description': '&uuml;berlegt es sich jeden Tag anderst wie er aussehen soll, eine echter Fashionvictim.'
+        'description': 'Der einzig nat&uuml;rliche Satellit der Erde &uuml;berlegt es sich jeden Tag anderst wie er aussehen soll, eine echter Fashionvictim.'
     },    
     "iss": {
         'active': 1,
@@ -197,7 +197,7 @@ CELESTIAL_BODY = {
         'pic':'pic-iss.png',
         'datatype': 'tle',
         'sourcefile': 'data/tle/catalog.txt',
-        'description': 'befindet sich seit 1998 in Bau und ist zur Zeit das gr&ouml;te k&uuml;nstliche Objekt im Erdorbit.'
+        'description': 'Befindet sich seit 1998 in Bau und ist zur Zeit das gr&ouml;te k&uuml;nstliche Objekt im Erdorbit.'
         # or http://www.celestrak.com/NORAD/elements/amateur.txt
     },
     
@@ -211,7 +211,7 @@ CELESTIAL_BODY = {
         'pic':'pic-voyager1.png',
         'datatype': 'nasacsv',
         'sourcefile': 'data/nasacsv/voyager_1.csv',
-        'description': 'hat soeben unser Sonnensystem verlassen uns reist tapfer weiter in f&uuml;r menschliche Gebilde unbekannte Gefilde.'
+        'description': 'Hat soeben unser Sonnensystem verlassen uns reist tapfer weiter in f&uuml;r menschliche Gebilde unbekannte Gefilde.'
     },
     "voyager2": {
         'active': 1,
@@ -222,7 +222,7 @@ CELESTIAL_BODY = {
         'pic':'pic-voyager2.png',
         'datatype': 'nasacsv',
         'sourcefile': 'data/nasacsv/voyager_2.csv',
-        'description': 'das am zweit-weitesten (nach ihrer Schwestersonde Voyager 1) von der Erde entfernte von Menschen gebaute Objekt'
+        'description': 'Das am zweit-weitesten (nach ihrer Schwestersonde Voyager 1) von der Erde entfernte von Menschen gebaute Objekt'
     },
     "hubble": {
         'active': 1,
@@ -302,7 +302,7 @@ CELESTIAL_BODY = {
         'distance': '65ly',
         'datatype': 'pyephem',
         'class': 'ephem.star("Aldebaran")',
-        'description': 'ist Teil des Wintersechsecks und liegt im offenen Sternhaufen Hyaden, zu dem er allerdings nicht als physikalisches Mitglied z&auml;hlt.'
+        'description': 'Ist Teil des Wintersechsecks und liegt im offenen Sternhaufen Hyaden, zu dem er allerdings nicht als physikalisches Mitglied z&auml;hlt.'
     },
     "antares": {
         'active': 1,
@@ -326,7 +326,7 @@ CELESTIAL_BODY = {
         'distance': '8.60ly', # +- 0,04 
         'datatype': 'pyephem',
         'class': 'ephem.star("Sirius")',
-        'description': 'mit einer scheinbaren Helligkeit von --1,46 mag der hellste Stern am Nachthimmel. Wird auch als Hundsstern bezeichnet.'
+        'description': 'Mit einer scheinbaren Helligkeit von --1,46 mag der hellste Stern am Nachthimmel. Wird auch als Hundsstern bezeichnet.'
     },
     "polaris": {
         'active': 1,
@@ -366,7 +366,7 @@ CELESTIAL_BODY = {
         'distance': '-1',
         'datatype': 'pyephem', 
         'class': 'ephem.star("Schedar")',
-        'description': 'bildet ein markantes W am Nachthimmel. Wird auch als Himmels-W. bezeichnet. Mit Einzelsternenamen wie: Shedir, Caph, Ruchbah, Segin, Achird'
+        'description': 'Bildet ein markantes W am Nachthimmel. Wird auch als Himmels-W. mit Einzelsternenamen wie: Shedir, Caph, Ruchbah, Segin, Achird, bezeichnet.'
     },
 	#Southerncross -> using star Mimosa which is part of constellation
 	"southerncross": {
@@ -392,7 +392,7 @@ CELESTIAL_BODY = {
         'distance': '-1', 
         'datatype': 'pyephem', 
         'class': 'ephem.star("Megrez")',
-        'description': 'Kaiser Augustus soll an Brust und Bauch zahlreiche Muttermale gehabt haben, die sich als Abbild dieser Sternkonfiguration deuten liessen.'
+        'description': 'Kaiser Augustus soll an Brust und Bauch zahlreiche Mutter- male gehabt haben, die sich als Abbild dieser Sternenkoni- figuration deuten liessen.'
     },
     #Orion -> using Betelgeuse
     "orion": {
@@ -405,7 +405,7 @@ CELESTIAL_BODY = {
         'distance': '-1',
         'datatype': 'pyephem', 
         'class': 'ephem.star("Betelgeuse")',
-        'description': 'das auffallendste Sternbild des Winterhimmels. Haupterkennungsmerkmal ist die auff&auml&auml;lige Reihe der Sterne Alnitak, Alnilam und Mintaka.'
+        'description': 'Das auffallendste Sternbild des Winterhimmels. Haupt- erkennungsmerkmal ist die auff&aumlllige Reihe der Sterne Alnitak, Alnilam &amp; Mintaka.'
     },
 
 #Asteroiden___Asteroids_________________________________________________
@@ -418,7 +418,7 @@ CELESTIAL_BODY = {
         'pic':'pic-243_ida.png',
         'datatype': 'nasacsv',
         'sourcefile': 'data/nasacsv/243_Ida.csv',
-        'description': 'it was discovered by the Galileo shuttle, it is just a banana shaped piece of rock... but it has its own moon!'
+        'description': 'It was discovered by the Galileo shuttle, it is just a banana shaped piece of rock... but it has its own moon!'
     },
     "2010_TK7": {
         'active': 1,
@@ -429,7 +429,7 @@ CELESTIAL_BODY = {
         'pic':'pic-2010_TK7.png',
         'datatype':  'nasacsv',
         'sourcefile': 'data/nasacsv/2010_TK7.csv',
-        'description': 'der erste Erd-Trojaner, auf eine Art unser zweiter Mond, wird uns aber nie gef&auml;hrlich werden, da er im L4 festsitzt.'
+        'description': 'Der erste Erd-Trojaner, auf eine Art unser zweiter Mond, wird uns aber nie gef&auml;hrlich werden, da er im L4 festsitzt.'
     },
 #Kometen___comets_______________________________________________________
 	#Georges Perec
@@ -444,7 +444,7 @@ CELESTIAL_BODY = {
         'pic':'pic-halley.png',
         'datatype': 'nasacsv',
         'sourcefile': 'data/nasacsv/halley.csv',
-        'description': 'ein periodischer Komet, der alle 75 bis 77 Jahre der Erde so nahe kommt, dass er gut mit freiem Auge beobachtet werden kann.'
+        'description': 'Ein periodischer Komet, der alle 75 bis 77 Jahre der Erde so nahe kommt, dass er gut mit freiem Auge beobachtet werden kann.'
     },
 	#ISON C/2012 S1 
     "ISON": {
@@ -456,7 +456,7 @@ CELESTIAL_BODY = {
         'pic':'pic-ISON_C-2012.png',
         'datatype': 'nasacsv',
         'sourcefile': 'data/nasacsv/ISON.csv', 
-        'description': 'stammt wahrscheinlich aus der Oortschen Wolke. Der sogenannte Sonnenstreifer wird der Sonne am 28.11.2013 sehr nahe kommen.'
+        'description': 'Stammt wahrscheinlich aus der Oortschen Wolke. Der sogenannte Sonnenstreifer wird der Sonne am 28.11. 2013 sehr nahe kommen.'
 	},
 #Galaxien___Galaxies____________________________________________________
     #M 31 aka Andromeda Galaxy aka C/2002 Y1 (Juels-Holvorcem)
@@ -471,7 +471,7 @@ CELESTIAL_BODY = {
         'distance': '8.60ly', ##checkern     
         'datatype': 'pyephem',
         'class': 'ephem.readdb("M31,f|G,0:42:44,+41:16:8,4.16,2000,11433|3700|35")', 
-        'description': 'ist das am weitesten von der Erde entfernte, mit blossem Auge sichtbare extragalaktische Objekt.'
+        'description': 'Ist das am weitesten von der Erde entfernte, mit blossem Auge sichtbare extragalaktische Objekt.'
     },
 #Gegenerde___Globus_Cassus______________________________________________
 	#Antichthon
@@ -484,7 +484,7 @@ CELESTIAL_BODY = {
         'pic':'pic-antichthon.png', 
         'datatype': 'pyephem', # Same direction as the Sun
         'class': 'ephem.Sun()', 
-        'description': 'ihre Existenz ist spekulativ n&auml;chstes Jahr liefert uns der Augenschein einer Raumsonde wohl die Gewissheit, das sie nicht existiert.'
+        'description': 'Ihre Existenz ist spekulativ n&auml;chstes Jahr liefert uns der Augenschein einer Raumsonde die Gewissheit, das sie nicht existiert.'
         },
 }
 
