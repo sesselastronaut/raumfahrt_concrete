@@ -55,8 +55,8 @@ class SerialCom:
 			#self.portName = 1
 		except:                  
 			self.connectionStatus = 0	
-			while self.portName<=4 :
-				# trying out the 4 serial ports : /dev/ttyUSB0 - /dev/ttyUSB3
+			while self.portName<=8 :
+				# trying out the 6 sesrial ports : /dev/ttyUSB0 - /dev/ttyUSB5
 				try:
 					print("Connection Error..trying another port");
 					print("checking: " + "/dev/ttyUSB"+str(self.portName))
@@ -64,13 +64,13 @@ class SerialCom:
 					print("Connection success!")
 					self.connectionStatus = 1
 					#ensures python mode communication
-					self.sendData('p', 9999)
+					#self.sendData('p', 999)
 					break
 				except:
 					self.connectionStatus = 0
 					print("Checking other Serial Connections")
 					self.portName = self.portName+1			
-			if self.portName == 4:
+			if self.portName == 8:
 				# means that all 4 ports are currently unavailable, must shutdown
 				print("SerialCom error please check..shutting SerialCom down now")
 				sys.exit(1)           
@@ -78,7 +78,7 @@ class SerialCom:
 # serialReconnect function handles connection troubles by trying to reconnect		
 	def serialReconnect(self):
 		print("Trying to Reconnect");
-		while self.portName<4 :
+		while self.portName<=8 :
 			try:
 				# turns on fatal error catching	
 				print("checking: " + "/dev/ttyUSB"+str(self.portName))
@@ -86,7 +86,7 @@ class SerialCom:
 				self.connectionStatus = 1
 				print("Connection success!")
 				#ensures python mode
-				self.sendData('p', 9999)
+				 #self.sendData('p', 999) 	
 				try:
 					self.resetBedFromLog()
 				except:
@@ -96,7 +96,7 @@ class SerialCom:
 				self.connectionStatus = 0
 				self.portName = self.portName+1
 				print("..Reconnection Error..");
-			self.portName = 0
+		self.portName = 0
 		
 	def sendData(self, dataType, data):
 		print("---------------")
@@ -110,7 +110,7 @@ class SerialCom:
 			self.ser.write(sentString)	
 			self.ser.flushOutput()
 			print("---------------")
-		except IOError:
+		except:
 			print("Communication Error..ReConnecting..")
 			#time.sleep(2) 
 			self.serialReconnect()
@@ -145,7 +145,7 @@ class SerialCom:
 					self.ser.flushInput()
 				data = self.ser.readline()	
 			print("---------------")
-		except IOError:
+		except:
 			print("Communication Error..ReConnecting..")
 			time.sleep(2) 
 			self.serialReconnect()

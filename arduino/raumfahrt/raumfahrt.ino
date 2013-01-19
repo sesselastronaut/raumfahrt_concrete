@@ -51,15 +51,17 @@ int adc_previous;
 int negator = -1; // this assumes motor positive voltage goes in clockwise otherwise error direction is wrong
 
 //hardhack
+/*
 const float sensor_deadZoneMin = 354;
 const float sensor_deadZoneMax = 360;
 const float sensor_deadZoneMid = 357;
-
+*/
 int resetNorthVal;
 int serialPrintMode = 2; 
 // 1 - Continous printing for human readable output, 
 // 2 - Python serialcom mode
 
+boolean beginSerialSending = false;
 char inputString [10];         // incoming serial byte
 char inputNum[5];
 float valueReceived;
@@ -98,6 +100,7 @@ void setup() {
   error_total = 0;
   firstTime=true;
   negator = -1;
+  beginSerialSending = false;
 }
 
 String sendFormat(char type, int data)
@@ -125,10 +128,12 @@ String sendFormat(char type, int data)
 
 void sendStatusOnSerial()
 {
-
-  Serial.println(sendFormat('c',int(10*theta_current)));
-  Serial.println(sendFormat('t',int(10*theta_desired)));
-  Serial.println(sendFormat('r',int(10*northReferenceAngle)));
+  if( beginSerialSending )
+  {
+    Serial.println(sendFormat('c',int(10*theta_current)));
+    Serial.println(sendFormat('t',int(10*theta_desired)));
+    Serial.println(sendFormat('r',int(10*northReferenceAngle)));
+  }
 }
 
 
@@ -170,8 +175,8 @@ void serialInterrupt()
     */
     
     switch(inputString[0]){
-      case 't': theta_desired = valueReceived; break;
-      case 'r': northReferenceAngle = valueReceived; break;
+      case 't': theta_desired = valueReceived; beginSerialSending = true; break;
+      case 'r': northReferenceAngle = valueReceived;  beginSerialSending = true;break;
       case 'p': serialPrintMode = 2; break;
       case 'h' : serialPrintMode = 1;break;
       default: break;
