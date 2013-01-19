@@ -1,6 +1,6 @@
 <?php
 
-if($_SERVER['SERVER_NAME'] == 'preview.flxlabs.org'){
+if($_SERVER['SERVER_NAME'] == '192.168.12.25'){
   $jsonFile =  '../py/rzalt.json';
   if(is_file($jsonFile)){
     readfile($jsonFile);
@@ -8,6 +8,7 @@ if($_SERVER['SERVER_NAME'] == 'preview.flxlabs.org'){
   else{
     echo "JSON file not found: ".$jsonFile;
   }
+  
 }
 else{
   $pyFile = '../py/rzalttojson.py';

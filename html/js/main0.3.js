@@ -99,7 +99,7 @@ var initData = function(){
 		window.setTimeout(loadData,30000);
 		// load bed target
 		$.ajax({
-		    url: '../py/data.json',
+		    url: 'init_data.php',
 		    context: document,
                     dataType: 'json',
 		    statusCode: {

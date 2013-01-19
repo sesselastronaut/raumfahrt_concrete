@@ -1,0 +1,31 @@
+
+__layout aendern -> json file neu schreiben
+python rzalttojson.py > rzalt.json
+
+__cronjob
+for wget_tle.sh 
+call "crontab -e" and add:
+* */6 * * * /home/pi/raumfahrt/py/data/tle/wget_tle.sh
+
+__startup python
+
+_____apache setup
+__install apache
+sudo apt-get install libapache2-mod-php5 libapache2-mod-perl2 php5 php5-cli php5-common php5-curl php5-dev php5-domxml php5-gd php5-imap php5-ldap php5-mhash php5-mysql php5-odbc
+sudo apt-get install libapache2-mod-php5 libapache2-mod-perl2 php5 php5-cli php5-common php5-curl php5-dev arduino php5-gd php5-imap php5-ldap php5-mhash php5-mysql php5-odbc
+
+__in apache das home Verzeichnis einstellen:
+directory in /etc/apache2/sites-enabled/000-default eintragen
+
+__raumfahrt folder der www-data gruppe hinzufuegen:
+sudo chgrp -R www-data raumfahrt
+
+__py folder writable machen:
+chmod -R  775 py/
+
+_____networksetup
+__fix IP-adress
+
+__wireless start im rc.local eintragen
+# sudo vim /etc/rc.local
+
