@@ -4,8 +4,6 @@ import time
 import datetime as dt
 import sys
 import os
-from serial.tools import list_ports
-
 
 def switch(numZeros):
 	return {
@@ -13,12 +11,30 @@ def switch(numZeros):
 	2 : '00',
 	3 : '000',
 	}.get(numZeros,'') 
-# read from arduino is mode 1 (sensorTest), 
-# write to arduino is mode 2 (rotatingBedTest), 
-# read/write to arduino is mode 3 (checkReferenceAngle and currentAngle) 
 
 
+'''
+The SerialCom class has methods for communicating with the bed. 
+It also has some diagnostic routines for testing the bed and sensors etc
+Only one instance  must exist for now
+
+Communication protocol : 
+Should have the following format : 
+'[symbol][4digitnumber]' (without the single quotes or square brackets)
+4digitnumber
+Always an 10 X angle in degrees (i.e. must be below 3600)
+Symbols : 
+c - current angle
+t - target angle
+r - north reference angle
+p - python mode serial communication (in this communication protocol)
+h - human readable serial communication (serialcom wont function anymore)
+
+'''
 class SerialCom:
+	
+
+# init function called when class i instantiated	
 	def __init__(self):
 		import sys
 		self.mode = 3
@@ -30,7 +46,7 @@ class SerialCom:
 		self.portName = 0
 		self.connectionStatus = 0
 		try:
-			# turns on fatal error catching	
+		# trying out the serial port /dev/ttyUSB
 			print("Opening Serial Com")
 			print("checking: " + "/dev/ttyUSB"+str(self.portName))
 			self.ser = serial.Serial('/dev/ttyUSB'+str(self.portName), 9600,timeout=1) # set the correct device name and baudrate
@@ -38,47 +54,39 @@ class SerialCom:
 			self.connectionStatus = 1
 			#self.portName = 1
 		except:                  
-		# do the following if a fatal error was detected
-		# please give the user a suitable error message
-		# quit and tell the OS the program closed due to an error
-			self.connectionStatus = 0 
-		#	if(self.portName == 4) :
-		#		self.portName  = 0
-		#	else:
-		#		self.portName = self.portName+1
-			
+			self.connectionStatus = 0	
 			while self.portName<=4 :
+				# trying out the 4 serial ports : /dev/ttyUSB0 - /dev/ttyUSB3
 				try:
 					print("Connection Error..trying another port");
-					#print([port[0] for port in list_ports.comports()])
-				
-					#import serial.tools.list_ports
-					#serial.tools.list_ports.comports()#list(serial.tools.list_ports.comports())
 					print("checking: " + "/dev/ttyUSB"+str(self.portName))
 					self.ser = serial.Serial('/dev/ttyUSB'+str(self.portName), 9600,timeout=1) # set the correct device name and baudrate
 					print("Connection success!")
 					self.connectionStatus = 1
+					#ensures python mode communication
+					self.sendData('p', 9999)
 					break
 				except:
 					self.connectionStatus = 0
 					print("Checking other Serial Connections")
-					self.portName = self.portName+1
-			
+					self.portName = self.portName+1			
 			if self.portName == 4:
+				# means that all 4 ports are currently unavailable, must shutdown
 				print("SerialCom error please check..shutting SerialCom down now")
 				sys.exit(1)           
-		
+
+# serialReconnect function handles connection troubles by trying to reconnect		
 	def serialReconnect(self):
 		print("Trying to Reconnect");
 		while self.portName<4 :
 			try:
 				# turns on fatal error catching	
-				#self.ser = serial.Serial('/dev/ttyUSB0', 9600,timeout=1) # set the correct device name and baudrate
 				print("checking: " + "/dev/ttyUSB"+str(self.portName))
 				self.ser = serial.Serial('/dev/ttyUSB'+str(self.portName), 9600,timeout=1)			
 				self.connectionStatus = 1
 				print("Connection success!")
-				
+				#ensures python mode
+				self.sendData('p', 9999)
 				try:
 					self.resetBedFromLog()
 				except:
@@ -87,15 +95,8 @@ class SerialCom:
 			except:                  
 				self.connectionStatus = 0
 				self.portName = self.portName+1
-				
-				# do the following if a fatal error was detected
-				# please give the user a suitable error message
-				# quit and tell the OS the program closed due to an error
 				print("..Reconnection Error..");
-				#print([port[0] for port in list_ports.comports()])
-		self.portName = 0
-		
-				#sys.exit(1) 
+			self.portName = 0
 		
 	def sendData(self, dataType, data):
 		print("---------------")
@@ -109,7 +110,7 @@ class SerialCom:
 			self.ser.write(sentString)	
 			self.ser.flushOutput()
 			print("---------------")
-		except:
+		except IOError:
 			print("Communication Error..ReConnecting..")
 			#time.sleep(2) 
 			self.serialReconnect()
@@ -126,9 +127,7 @@ class SerialCom:
 			rCtr = 0
 			while data and dataCtr<3:			
 				if(len(data)==7):
-					dataCtr = cCtr + tCtr + rCtr#dataCtr+1
-					#print(data)
-					#print(data[0]+":"+data[1:5])
+					dataCtr = cCtr + tCtr + rCtr
 					value = int(data[1:5])
 					value = float(value) / 10
 					if("c" in data[0] and cCtr == 0):
@@ -146,7 +145,7 @@ class SerialCom:
 					self.ser.flushInput()
 				data = self.ser.readline()	
 			print("---------------")
-		except:
+		except IOError:
 			print("Communication Error..ReConnecting..")
 			time.sleep(2) 
 			self.serialReconnect()
