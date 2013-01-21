@@ -28,7 +28,9 @@ const int analogIn1Pin = A0;
 const int analogIn2Pin = A1;
  
 const int analogOutPin = 9;
-const int resetNorthPin = 5;
+const int resetNorthAnalogPin = A5;
+
+
 
 int adc_current;
 float theta_m1;
@@ -36,6 +38,7 @@ float theta_m2;
 
 float theta_current; 
 float theta_desired;
+float theta_sensor;
 float error = 0;
 float error_Dot = 0;
 float error_previous = 0;
@@ -46,6 +49,7 @@ const float Ki = 0; //0.001;
 float analogVoltage; 
 int digitalVoltage;// value output to the PWM (voltage out)
 float corrected_analogVoltage;
+float northAnalogVal;
 float northReferenceAngle;
 int adc_previous;
 int negator = -1; // this assumes motor positive voltage goes in clockwise otherwise error direction is wrong
@@ -73,17 +77,40 @@ boolean activeControlOn;
 int loop_ctr;
 
 int sensor_window[10];
+int resetNorthSensor_window[10];
 
 boolean firstTime;
+
+
+
+
+
+int adc1;
+int adc2;
+
+float v1;
+float v2;
+
+float theta1;
+float theta2;
+
+float t;
+float theta1p1;
+float theta1p2;
+
+float thetaOut;
+const float oneByM1 = 36;
+const float oneByM2 = -36;
+
 
 void setup() {
   Serial.begin(9600);
   pinMode(2, INPUT);
   digitalWrite(2, LOW);
   
-  // ResertNorthPin
-  pinMode(resetNorthPin,INPUT);
-  digitalWrite(resetNorthPin,HIGH);
+  // ResertNorthPin - obsolete
+  //pinMode(resetNorthPin,INPUT);
+  //digitalWrite(resetNorthPin,HIGH);
  
   //attachInterrupt(0, serialInterrupt, CHANGE);
   // Used to signal that main loop is alive.
@@ -176,7 +203,7 @@ void serialInterrupt()
     
     switch(inputString[0]){
       case 't': theta_desired = valueReceived; beginSerialSending = true; break;
-      case 'r': northReferenceAngle = valueReceived;  beginSerialSending = true;break;
+     // case 'r': northReferenceAngle = valueReceived;  beginSerialSending = true;break;
       case 'p': serialPrintMode = 2; break;
       case 'h' : serialPrintMode = 1;break;
       default: break;
@@ -204,6 +231,7 @@ void ground_control(float theta_current)
 
 
 //    if (activeControlOn == true){
+  /*
       if(theta_desired > 360){
         
 //protecting for sensible values
@@ -212,7 +240,7 @@ void ground_control(float theta_current)
       }
         else if (theta_desired < 0){
             theta_desired = 0;
-      }
+      }*/
   //    activeControlOn = false;
    // }
     /*else {
@@ -227,6 +255,9 @@ void ground_control(float theta_current)
       error = error + 360;
     }
     
+    if(error>180) {
+      error = error-360;
+    }
     
     error_Dot = (error_previous - error);
     if (error == 0 && error_Dot == 0 && error_total == 0){
@@ -246,22 +277,25 @@ void ground_control(float theta_current)
   //  Serial.print("desired = "); //coming from python through serial number between 0 and 360°
  //   Serial.print(buf[0]);   
     if(serialPrintMode == 1) {
-      Serial.print("Adc=");
-      Serial.print(adc_current);/*
+      Serial.print("theta_sensor_dig=");
+      Serial.print(adc1);/*
+      Serial.print("theta_sensor=");
+      Serial.print(theta_sensor);/*
       Serial.print(" | theta_m1=");
       Serial.print(theta_m1);
       Serial.print(" | theta_m2=");        
       Serial.print(theta_m2);*/
-      Serial.print(" | theta_desired = ");
-      Serial.print(theta_desired);
       Serial.print(" | theta_current = ");      
       Serial.print(theta_current);
+      Serial.print(" | theta_desired = ");
+      Serial.print(theta_desired);
+      Serial.print(" | north_current_dig = ");      
+      Serial.print(northAnalogVal);
+      
       Serial.print(" | north_current = ");      
       Serial.print(northReferenceAngle);
       Serial.print(" | error = ");
       Serial.print(error);
-      Serial.print(" | error_previous = ");
-      Serial.print(error_previous);
       Serial.print(" | error_Dot = ");
       Serial.print(error_Dot);;
       Serial.print(" | analogVoltage = ");
@@ -275,41 +309,23 @@ void ground_control(float theta_current)
    error_previous = error;
     
 }
-
-
-float adc1;
-float adc2;
-
-float v1;
-float v2;
-
-float theta1;
-float theta2;
-
-float t;
-float theta1p1;
-float theta1p2;
-
-float thetaOut;
-const float oneByM1 = 36;
-const float oneByM2 = -36;
-
 float computeBedAngle()
 {
   
   
-  static float adc1Past = 0.0;
-  static float adc2Past = 0.0;
+  static int adc1Past = 0;
+  static int adc2Past = 0;
 
-    adc1 = 0.6* (float)analogRead(analogIn1Pin) + 0.4*adc1Past; 
-    adc2 = 0.6* (float)analogRead(analogIn2Pin) + 0.4*adc2Past; 
+    adc1 = analogRead(analogIn1Pin);//0.6* (float)analogRead(analogIn1Pin) + 0.4*adc1Past; 
+    adc2 = analogRead(analogIn2Pin);//0.6* (float)analogRead(analogIn2Pin) + 0.4*adc2Past; 
     
+    
+    v1 = 5*((0.6*(float)adc1 + 0.4*(float)adc1Past) /1023.0);
+    v2 = 5*((0.6*(float)adc2 + 0.4*(float)adc2Past )/1023.0);
     adc1Past = adc1;
     adc2Past = adc2;
     
     
-    v1 = 5*(adc1/1023.0);
-    v2 = 5*(adc2/1023.0);
     /*
      if(serialPrintMode == 1) {
        
@@ -408,7 +424,7 @@ void loop(){
       attachInterrupt(0, serialInterrupt, CHANGE);
       firstTime = false;
       inService = false;
-      delay(2);
+      delay(1);
     }
    
   
@@ -418,6 +434,7 @@ void loop(){
   
   adc_previous = adc_current; 
   adc_current = computeBedAngle();
+  
   
     
 //calculate the current position in angle degrees
@@ -434,32 +451,50 @@ void loop(){
   }
   */
   sensor_window[loop_ctr] = adc_current;
+  int northResetIn = analogRead(resetNorthAnalogPin);
   
+
+  resetNorthSensor_window[loop_ctr] =   map(northResetIn, 0, 1023, 0, 1023);  ;
+      
   loop_ctr = loop_ctr + 1;
 
-    if(loop_ctr == 9) {
+    if(loop_ctr>9) {
+      //Serial.print(loop_ctr);
     loop_ctr = 0;  
-    theta_current = 0.0;
+    theta_sensor = 0.0;
+    northAnalogVal = 0.0;
       for( int i = 0; i<10; i++) {
-        theta_current = theta_current + sensor_window[i];
+        theta_sensor = theta_sensor + (float)sensor_window[i];
+        northAnalogVal = northAnalogVal + (float)resetNorthSensor_window[i];
       }
-      theta_current =  (theta_current/10);
-           
-      resetNorthVal = digitalRead(resetNorthPin);
-      if(resetNorthVal == 0)
-      {
-        theta_current = theta_current - northReferenceAngle;
-        if(theta_current<0){
-          theta_current = theta_current+360;
-        }
-         else if(theta_current>360){
-           theta_current = theta_current-360;
-         }
+      
+      
+      theta_sensor =  (theta_sensor/10.0);
+      northAnalogVal = (northAnalogVal/10.0);
+      
+      /*
+      Serial.print("| theta_sensor : ");
+      Serial.print(theta_sensor);
+      Serial.print("| northAnalogVal : ");
+      Serial.println(northAnalogVal);      
+*/       /*    
+      resetNorthVal = digitalRead(resetNorthPin);*/
+      northReferenceAngle = northAnalogVal * (0.35191); //value *(360*5)/1024
+
+      //if(resetNorthVal == 0)
+      //{
         
+       theta_current = theta_sensor - northReferenceAngle;
+       if(theta_current<0){
+         theta_current = theta_current+360;
+       }
+       else if(theta_current>=360){
+          theta_current = theta_current-360;
+       }
         
         ground_control(theta_current);
         delay(10);
-      } 
+      /*} 
       else{ 
         digitalVoltage = 5;
         northReferenceAngle = theta_current;
@@ -474,9 +509,8 @@ void loop(){
         {
           sendStatusOnSerial();
         }
+      */
       
-        delay(10);
-      }
   }
 }
 

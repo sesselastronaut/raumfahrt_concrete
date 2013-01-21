@@ -24,7 +24,7 @@ def celestial_body_func():
 	#Object creation
 	
 	sc = SerialCom()
-	sc.resetBedFromLog()
+	#sc.resetBedFromLog()
 	
 
 	while 1:

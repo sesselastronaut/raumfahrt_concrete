@@ -9,7 +9,7 @@ if __name__ == "__main__" :
 	print("metascript trying to set a bed position")
 		
 	#SerialCom.bedReferenceTest(sc)
-	SerialCom.setBedPosition(sc,116.6)
+	#SerialCom.setBedPosition(sc,116.6)
 	
 	theta = 116.6
 	ctr = 0
