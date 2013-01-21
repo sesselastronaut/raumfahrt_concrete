@@ -69,7 +69,8 @@ def celestial_body_func():
 	# send to serial port
 
 		#print("PositionText:"+str(int(float(position)*10)))
-		positionTruncInt = int(10*float(position))
+		# hack of 360 - angle added for compensating the clockwise reversed motion of the bed
+		positionTruncInt = int(10*float(360 - position))
 		positionTruncFloat = float(positionTruncInt)/10
 		print(positionTruncFloat)
 		
