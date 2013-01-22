@@ -55,8 +55,7 @@ def celestial_body_func():
 			csvfile =  celestial_body["sourcefile"]
 			position = nasa_csvparser.get_position(csvfile)
 			logging.debug("London GMT / UTC time:" + position["date"])
-			position = position["azi"]
-		
+			position = float(position["azi"])
 		elif celestial_body["datatype"] == 'tle':
 			logging.debug("using tle parser")
 			tle_file =  open (celestial_body["sourcefile"])
@@ -70,14 +69,13 @@ def celestial_body_func():
 
 		#print("PositionText:"+str(int(float(position)*10)))
 		# hack of 360 - angle added for compensating the clockwise reversed motion of the bed
-		positionTruncInt = int(10*float(360 - position))
+		positionTruncInt = int(10*float(360.0 - position))
 		positionTruncFloat = float(positionTruncInt)/10
-		print(positionTruncFloat)
-		
-		
+		#print(positionTruncFloat)
+				
 		sc.setBedPosition(positionTruncFloat)
 		logging.debug("Sending to serial:")
-		logging.debug(position)
+		logging.debug(positionTruncFloat)
 
 		time.sleep(1)
 		sc.receiveData()

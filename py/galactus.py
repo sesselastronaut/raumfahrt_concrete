@@ -6,5 +6,5 @@ while 1:
 		celestial_body_func()		
 		time.sleep(1)
 	except:
-		print("Some gravitational slingshots creating wormholes in celestial body...restarting the big bang")
+		print("_________Some gravitational slingshots creating wormholes in celestial body...restarting the big bang")
 		
